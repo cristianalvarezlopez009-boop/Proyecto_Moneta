@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moneta — Control de gastos personales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjQiIHkxPSI0IiB4Mj0iNjAiIHkyPSI2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzRDZCRkYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEUxNTMzIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJncmVlbkdyYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjE2IiB5Mj0iMTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN0NFOEI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzEyQjRBMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjYmdHcmFkKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM2LDkpIHJvdGF0ZSgxOCkiPgogICAgPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiByeD0iMi40IiBmaWxsPSJ1cmwoI2dyZWVuR3JhZCkiLz4KICA8L2c+CiAgPHJlY3QgeD0iMTMiIHk9IjIyIiB3aWR0aD0iMzgiIGhlaWdodD0iMjgiIHJ4PSI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIi8+CiAgPGNpcmNsZSBjeD0iNDUiIGN5PSIzNiIgcj0iMi42IiBmaWxsPSIjRkZGRkZGIi8+CiAgPHBhdGggZD0iTTIwIDQ2IEwyMCAzMCBMMzIgNDAgTDQ0IDMwIEw0NCA0NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --bg: #F5F7FE;
+    --bg-2: #FFFFFF;
+    --card: #EDF1FD;
+    --line: #DCE3F7;
+    --ink: #10173A;
+    --ink-soft: #4C5480;
+    --ink-faint: #8791BB;
+
+    --blue: #2F5BFF;
+    --blue-deep: #1E3FCC;
+    --blue-ink: #F2F5FF;
+    --blue-pale: #E7ECFE;
+
+    --teal: #12B4A0;
+    --teal-bg: #E4F8F5;
+    --alert: #D94F4F;
+    --alert-bg: #FBEAEA;
+
+    --shadow: rgba(47, 91, 255, 0.14);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-ui: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B0F26;
+      --bg-2: #10143080;
+      --bg-2: #131834;
+      --card: #171D3E;
+      --line: #2A3160;
+      --ink: #EEF1FE;
+      --ink-soft: #ABB3E0;
+      --ink-faint: #6C74A3;
+      --blue: #5B7FFF;
+      --blue-deep: #7C9AFF;
+      --blue-ink: #0E1230;
+      --blue-pale: #1B2350;
+      --teal: #3FD6C0;
+      --teal-bg: #0E2A26;
+      --alert: #F08080;
+      --alert-bg: #351A1A;
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0B0F26; --bg-2: #131834; --card: #171D3E; --line: #2A3160;
+    --ink: #EEF1FE; --ink-soft: #ABB3E0; --ink-faint: #6C74A3;
+    --blue: #5B7FFF; --blue-deep: #7C9AFF; --blue-ink: #0E1230; --blue-pale: #1B2350;
+    --teal: #3FD6C0; --teal-bg: #0E2A26; --alert: #F08080; --alert-bg: #351A1A;
+    --shadow: rgba(0, 0, 0, 0.45);
+  }
+
+  * { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px)); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* -------- nav -------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .brand .mark-svg { display: block; border-radius: 9px; }
+  .nav-links { display: flex; gap: 30px; font-size: 15px; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); transition: color .15s ease; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 14px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background .15s ease;
+  }
+  .nav-cta:hover { background: var(--blue-deep); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* -------- hero -------- */
+  .hero { padding: 80px 0 60px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px;
+    max-width: 15ch;
+  }
+  .lede { font-size: 18px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 34px; }
+  .hero-ctas { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: var(--font-ui); font-weight: 600; font-size: 15.5px;
+    background: var(--blue); color: #fff; border: none;
+    padding: 15px 28px; border-radius: 9px; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .btn-primary:hover { background: var(--blue-deep); transform: translateY(-1px); box-shadow: 0 10px 24px var(--shadow); }
+  .btn-ghost {
+    font-family: var(--font-ui); font-weight: 600; font-size: 15px;
+    color: var(--ink-soft); text-decoration: none;
+  }
+  .btn-ghost:hover { color: var(--ink); }
+
+  /* -------- hero balance card -------- */
+  .balance-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 24px 48px var(--shadow);
+    padding: 26px;
+    max-width: 360px;
+    margin-left: auto;
+  }
+  .balance-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .balance-top .who { font-size: 13.5px; color: var(--ink-faint); }
+  .balance-top .pill { font-family: var(--font-mono); font-size: 11px; background: var(--teal-bg); color: var(--teal); padding: 4px 10px; border-radius: 20px; }
+  .balance-label { font-size: 13px; color: var(--ink-faint); margin-bottom: 6px; }
+  .balance-amount { font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--ink); margin-bottom: 20px; }
+  .balance-bars { display: flex; align-items: flex-end; gap: 8px; height: 60px; margin-bottom: 20px; }
+  .balance-bars .bar { flex: 1; background: var(--blue-pale); border-radius: 5px 5px 0 0; }
+  .balance-bars .bar.active { background: var(--blue); }
+  .balance-list { display: flex; flex-direction: column; gap: 12px; }
+  .balance-item { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; }
+  .balance-item .cat { display: flex; align-items: center; gap: 9px; color: var(--ink-soft); }
+  .balance-item .dot { width: 8px; height: 8px; border-radius: 3px; }
+  .balance-item .amt { font-family: var(--font-mono); color: var(--ink); }
+  .balance-flag {
+    margin-top: 18px; background: var(--alert-bg); color: var(--alert);
+    font-size: 12.5px; padding: 10px 12px; border-radius: 10px; line-height: 1.4;
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+    .balance-card { margin: 0 auto; }
+  }
+
+  /* -------- section shell -------- */
+  .section { padding: 84px 0; border-top: 1px solid var(--line); }
+  .section-head { max-width: 62ch; margin-bottom: 46px; }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 36px);
+    letter-spacing: -0.015em;
+    margin: 0 0 14px;
+  }
+  .section-head p { color: var(--ink-soft); font-size: 17px; margin: 0; max-width: 54ch; }
+
+  /* -------- gasto hormiga trail -------- */
+  .trail-block { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+  @media (max-width: 860px) { .trail-block { grid-template-columns: 1fr; } }
+  .trail-svg-wrap { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+  .trail-caption { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-faint); margin-top: 16px; }
+  .trail-text p { color: var(--ink-soft); font-size: 16px; margin: 0 0 16px; }
+  .trail-text strong { color: var(--ink); font-weight: 600; }
+
+  /* -------- how it works -------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+  .step { border-top: 2px solid var(--blue); padding-top: 20px; }
+  .step-num { font-family: var(--font-mono); color: var(--blue); font-size: 14px; margin-bottom: 14px; display: block; }
+  .step h3 { font-family: var(--font-ui); font-size: 18px; font-weight: 700; margin: 0 0 8px; }
+  .step p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+
+  /* -------- pocket section -------- */
+  .pocket { background: var(--card); }
+  .pocket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+  @media (max-width: 860px) { .pocket-grid { grid-template-columns: 1fr; } }
+  .pocket-card {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px;
+    padding: 28px; box-shadow: 0 18px 36px var(--shadow);
+  }
+  .pocket-card .label { font-size: 13px; color: var(--ink-faint); margin-bottom: 6px; }
+  .pocket-card .amount { font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--teal); margin-bottom: 18px; }
+  .bar-track { height: 8px; background: var(--blue-pale); border-radius: 6px; overflow: hidden; margin-bottom: 8px; }
+  .bar-fill { height: 100%; width: 64%; background: var(--teal); border-radius: 6px; }
+  .pocket-card .goal-label { font-size: 12.5px; color: var(--ink-faint); display: flex; justify-content: space-between; margin-bottom: 22px; }
+  .tip-row { display: flex; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-soft); }
+  .tip-row .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); margin-top: 6px; flex: none; }
+  .pocket-text ul { padding-left: 0; list-style: none; margin: 22px 0 0; }
+  .pocket-text li { display: flex; gap: 12px; padding: 13px 0; border-top: 1px solid var(--line); font-size: 15.5px; color: var(--ink-soft); }
+  .pocket-text li:last-child { border-bottom: 1px solid var(--line); }
+
+  /* -------- alert band -------- */
+  .alert-band { background: var(--ink); color: var(--bg); }
+  .alert-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; }
+  @media (max-width: 860px) { .alert-grid { grid-template-columns: 1fr; } }
+  .alert-band h2 { color: var(--bg); }
+  .alert-band .section-head p { color: color-mix(in srgb, var(--bg) 70%, transparent); }
+  .alert-chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--alert); color: #fff;
+    font-family: var(--font-mono); font-size: 13px;
+    padding: 10px 14px; border-radius: 20px; margin-bottom: 16px;
+  }
+  .alert-phone {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px;
+    padding: 22px; max-width: 300px; margin-left: auto; color: var(--ink);
+  }
+  .alert-phone .row { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-faint); margin-bottom: 14px; }
+  .alert-phone .msg { background: var(--alert-bg); color: var(--alert); border-radius: 10px; padding: 13px 14px; font-size: 13.5px; line-height: 1.45; }
+
+  /* -------- form section -------- */
+  .form-section { background: var(--card); }
+  .form-shell {
+    max-width: 560px; margin: 0 auto; background: var(--bg-2);
+    border: 1px solid var(--line); border-radius: 20px;
+    box-shadow: 0 28px 56px var(--shadow); overflow: hidden;
+  }
+  .form-header { padding: 32px 36px 8px; text-align: center; }
+  .form-header h2 { font-size: 26px; margin-bottom: 8px; }
+  .form-header p { color: var(--ink-soft); font-size: 15px; margin: 0 0 6px; }
+  form.signup { padding: 22px 36px 36px; }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .field input {
+    width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
+    background: var(--card); border: 1px solid var(--line); border-radius: 9px;
+    padding: 12px 14px; transition: border-color .12s ease;
+  }
+  .field input::placeholder { color: var(--ink-faint); }
+  .field input:focus-visible, .check input:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+  .field input:focus { border-color: var(--blue); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+  .check { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--ink-soft); margin: 6px 0 26px; }
+  .check input { margin-top: 3px; }
+  .field-error { color: var(--alert); font-size: 12.5px; margin-top: 6px; display: none; }
+  .field.invalid input { border-color: var(--alert); }
+  .field.invalid .field-error { display: block; }
+  .submit-btn {
+    width: 100%; font-family: var(--font-ui); font-weight: 600; font-size: 15.5px;
+    background: var(--blue); color: #fff; border: none; padding: 15px; border-radius: 9px; cursor: pointer;
+    transition: background .12s ease, transform .12s ease;
+  }
+  .submit-btn:hover { background: var(--blue-deep); transform: translateY(-1px); }
+  .form-fineprint { font-size: 12px; color: var(--ink-faint); text-align: center; margin-top: 14px; line-height: 1.5; }
+
+  .success { display: none; padding: 48px 36px; text-align: center; }
+  .success.show { display: block; }
+  form.signup.hide { display: none; }
+  .success .check-mark {
+    width: 48px; height: 48px; border-radius: 50%; background: var(--teal-bg); color: var(--teal);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 22px;
+  }
+  .success h3 { font-family: var(--font-display); font-size: 22px; margin: 0 0 10px; }
+  .success p { color: var(--ink-soft); font-size: 15px; max-width: 38ch; margin: 0 auto; }
+  .success .ticket-code {
+    display: inline-block; margin-top: 18px; font-family: var(--font-mono); font-size: 13px;
+    background: var(--card); border: 1px solid var(--line); padding: 8px 16px; border-radius: 20px; color: var(--ink-soft);
+  }
+
+  /* -------- footer -------- */
+  footer { padding: 44px 0 calc(44px + env(safe-area-inset-bottom, 0px)); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--ink-faint); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg class="mark-svg" viewBox="0 0 64 64" width="34" height="34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="navBgGrad" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3D6BFF"/>
+            <stop offset="1" stop-color="#0E1533"/>
+          </linearGradient>
+          <linearGradient id="navGreenGrad" x1="0" y1="0" x2="16" y2="10" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#7CE8B4"/>
+            <stop offset="1" stop-color="#12B4A0"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="16" fill="url(#navBgGrad)"/>
+        <g transform="translate(36,9) rotate(18)">
+          <rect width="16" height="10" rx="2.4" fill="url(#navGreenGrad)"/>
+        </g>
+        <rect x="13" y="22" width="38" height="28" rx="7" fill="none" stroke="#FFFFFF" stroke-width="3.2"/>
+        <circle cx="45" cy="36" r="2.6" fill="#FFFFFF"/>
+        <path d="M20 46 L20 30 L32 40 L44 30 L44 46" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Moneta
+    </div>
+    <nav class="nav-links">
+      <a href="#gasto-hormiga">El gasto hormiga</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#bolsillo">Bolsillo inteligente</a>
+    </nav>
+    <a class="nav-cta" href="#registro">Registrarse</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Cada peso que gastas, queda registrado.</h1>
+      <p class="lede">Moneta es la app para llevar el control de tus finanzas personales: sube tus comprobantes de transferencia y tus tirillas de compra, y entérate exactamente en qué se te va la plata cada mes.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#registro">Reservar mi cupo</a>
+        <a class="btn-ghost" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+    </div>
+    <div class="balance-card">
+      <div class="balance-top">
+        <span class="who">Resumen de octubre</span>
+        <span class="pill">Al día</span>
+      </div>
+      <div class="balance-label">Disponible este mes</div>
+      <div class="balance-amount">$612.450</div>
+      <div class="balance-bars">
+        <div class="bar" style="height:35%"></div>
+        <div class="bar" style="height:55%"></div>
+        <div class="bar active" style="height:80%"></div>
+        <div class="bar" style="height:42%"></div>
+        <div class="bar" style="height:60%"></div>
+        <div class="bar active" style="height:70%"></div>
+        <div class="bar" style="height:30%"></div>
+      </div>
+      <div class="balance-list">
+        <div class="balance-item"><span class="cat"><span class="dot" style="background:var(--blue)"></span>Tienda D1</span><span class="amt">$8.400</span></div>
+        <div class="balance-item"><span class="cat"><span class="dot" style="background:var(--teal)"></span>Uber</span><span class="amt">$12.300</span></div>
+        <div class="balance-item"><span class="cat"><span class="dot" style="background:var(--ink-faint)"></span>Café</span><span class="amt">$4.500</span></div>
+      </div>
+      <div class="balance-flag">3 gastos hormiga detectados esta semana — suman $27.200 en cosas pequeñas.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gasto-hormiga">
+  <div class="wrap trail-block">
+    <div class="trail-text">
+      <div class="section-head" style="margin-bottom:20px;">
+        <h2>El gasto hormiga es el que más duele, porque no lo ves.</h2>
+      </div>
+      <p>Un café, una propina, una recarga, una bolsa de mecato. Cada uno parece <strong>demasiado pequeño para anotar</strong>, y por eso nunca aparece en el presupuesto — hasta que a fin de mes falta plata y nadie sabe por qué.</p>
+      <p>Moneta no te deja saltarte nada: cada transferencia, cada tirilla, cada recibo se sube y se suma. Si gastaste, queda registrado.</p>
+    </div>
+    <div>
+      <div class="trail-svg-wrap">
+        <svg viewBox="0 0 460 200" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gastos pequeños que se acumulan en un total">
+          <line x1="20" y1="170" x2="440" y2="170" stroke="var(--line)" stroke-width="1"/>
+          <g fill="var(--blue)">
+            <circle cx="30" cy="150" r="4"/>
+            <circle cx="65" cy="158" r="4"/>
+            <circle cx="100" cy="146" r="5"/>
+            <circle cx="140" cy="160" r="4"/>
+            <circle cx="175" cy="150" r="5"/>
+            <circle cx="212" cy="140" r="6"/>
+            <circle cx="250" cy="152" r="5"/>
+            <circle cx="288" cy="132" r="6"/>
+            <circle cx="326" cy="144" r="6"/>
+          </g>
+          <path d="M30 150 Q 180 60 366 96" stroke="var(--blue)" stroke-width="1.5" fill="none" stroke-dasharray="1 8" stroke-linecap="round" opacity="0.6"/>
+          <rect x="360" y="60" width="80" height="52" rx="12" fill="var(--bg-2)" stroke="var(--blue)" stroke-width="1.5"/>
+          <text x="400" y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--ink-faint)">TOTAL</text>
+          <text x="400" y="100" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="var(--ink)">$91.300</text>
+        </svg>
+      </div>
+      <div class="trail-caption">9 gastos "pequeños" en una semana, sumados en una sola cifra.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tres pasos, y tus finanzas dejan de ser un misterio.</h2>
+      <p>Sin categorías complicadas ni hojas de cálculo. Tú registras, Moneta organiza.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Registra cada gasto</h3>
+        <p>Apenas gastes, sube la foto del recibo, la tirilla o el comprobante de la transferencia. Toma diez segundos.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>Deja que Moneta organice</h3>
+        <p>Cada gasto se clasifica solo por categoría, para que veas de un vistazo en qué se te va la plata este mes.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Cuida tu bolsillo</h3>
+        <p>Recibe recomendaciones sobre lo que te va sobrando y alertas antes de que tu cuenta se quede en ceros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pocket" id="bolsillo">
+  <div class="wrap pocket-grid">
+    <div class="pocket-text">
+      <div class="section-head" style="margin-bottom:0;">
+        <h2>Un bolsillo inteligente para lo que te va sobrando.</h2>
+        <p>Cuando gastas menos de lo previsto, esa diferencia no se pierde de vista: Moneta te la separa y te sugiere qué hacer con ella.</p>
+      </div>
+      <ul>
+        <li>Aparta automáticamente lo que te sobró de tu presupuesto del mes.</li>
+        <li>Te recomienda si te conviene ahorrarlo, adelantar un pago o darte un gusto puntual.</li>
+        <li>Muestra tu avance hacia la meta de ahorro que tú definas.</li>
+      </ul>
+    </div>
+    <div class="pocket-card">
+      <div class="label">Bolsillo de ahorro — Vacaciones</div>
+      <div class="amount">$487.000</div>
+      <div class="bar-track"><div class="bar-fill"></div></div>
+      <div class="goal-label"><span>64% de la meta</span><span>Meta: $760.000</span></div>
+      <div class="tip-row"><span class="dot"></span><span>Este mes gastaste $38.000 menos en domicilios. Podrías moverlos al bolsillo.</span></div>
+      <div class="tip-row"><span class="dot"></span><span>Te sobran 6 días de presupuesto de transporte. Vas bien.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alert-band">
+  <div class="wrap alert-grid">
+    <div>
+      <div class="section-head">
+        <span class="alert-chip">● Saldo bajo</span>
+        <h2>Antes de que te quedes en ceros, te avisamos.</h2>
+        <p>Moneta vigila tu saldo disponible frente a lo que ya tienes comprometido en el mes, y te avisa a tiempo — no cuando ya es tarde.</p>
+      </div>
+    </div>
+    <div class="alert-phone">
+      <div class="row"><span>Moneta</span><span>ahora</span></div>
+      <div class="msg">Te quedan $23.000 disponibles y aún faltan 9 días de mes. Revisa tus gastos hormiga de esta semana.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section form-section" id="registro">
+  <div class="wrap">
+    <div class="form-shell">
+      <div class="form-header">
+        <h2>Empieza a inscribirte</h2>
+        <p>Completa este formulario para reservar tu cupo. Luego, desde la app móvil terminas de crear tu usuario y tu contraseña.</p>
+      </div>
+
+      <form class="signup" id="signupForm" novalidate>
+        <div class="field-row">
+          <div class="field" id="field-nombre">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Laura Gómez" autocomplete="name" required>
+            <div class="field-error">Escribe tu nombre completo.</div>
+          </div>
+          <div class="field" id="field-celular">
+            <label for="celular">Número de celular</label>
+            <input type="tel" id="celular" name="celular" placeholder="300 123 4567" autocomplete="tel" required>
+            <div class="field-error">Ingresa un número de celular válido.</div>
+          </div>
+        </div>
+
+        <div class="field" id="field-correo">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+          <div class="field-error">Ingresa un correo electrónico válido.</div>
+        </div>
+
+        <div class="field" id="field-ciudad">
+          <label for="ciudad">Ciudad</label>
+          <input type="text" id="ciudad" name="ciudad" placeholder="Bello, Antioquia" autocomplete="address-level2">
+        </div>
+
+        <label class="check" for="terminos">
+          <input type="checkbox" id="terminos" name="terminos" required>
+          <span>Acepto que Moneta guarde mis datos para crear mi cuenta y me contacte para continuar el registro en la app móvil.</span>
+        </label>
+
+        <button type="submit" class="submit-btn">Registrarse</button>
+        <div class="form-fineprint">La contraseña se crea directamente en la app móvil, no aquí. Este formulario solo reserva tu cupo.</div>
+      </form>
+
+      <div class="success" id="successMsg">
+        <div class="check-mark">✓</div>
+        <h3>Listo, quedaste en la lista.</h3>
+        <p>Te escribimos a tu correo con el paso a paso. Descarga la app Moneta para terminar de crear tu usuario y tu contraseña.</p>
+        <span class="ticket-code" id="ticketCode">CUPO N.° 000000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>Moneta — proyecto académico de Metodologías de desarrollo</div>
+    <div>Landing page · Sprint 1</div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('signupForm');
+  const successMsg = document.getElementById('successMsg');
+  const ticketCode = document.getElementById('ticketCode');
+
+  function setInvalid(fieldId, invalid) {
+    const el = document.getElementById(fieldId);
+    if (!el) return;
+    el.classList.toggle('invalid', invalid);
+  }
+
+  function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function isValidPhone(v) { return /^[\d\s()+-]{7,15}$/.test(v); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const celular = document.getElementById('celular').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const terminos = document.getElementById('terminos').checked;
+
+    let valid = true;
+    setInvalid('field-nombre', nombre.length < 3);
+    if (nombre.length < 3) valid = false;
+
+    setInvalid('field-celular', !isValidPhone(celular));
+    if (!isValidPhone(celular)) valid = false;
+
+    setInvalid('field-correo', !isValidEmail(correo));
+    if (!isValidEmail(correo)) valid = false;
+
+    if (!terminos) valid = false;
+
+    if (!valid) return;
+
+    const code = String(Math.floor(100000 + Math.random() * 899999));
+    ticketCode.textContent = 'CUPO N.° ' + code;
+    form.classList.add('hide');
+    successMsg.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
