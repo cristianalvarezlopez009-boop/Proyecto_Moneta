@@ -1,0 +1,1037 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Space+Grotesk:wght@500&display=swap');
+/*Sirve para importar fuentes tipográficas externas desde Google Fonts directamente a tu archivo CSS, permitiéndote usarlas en tu sitio web sin necesidad de descargarlas o instalarlas en la computadora.*/
+
+/*Sirve para eliminar los márgenes e inconsistencias por defecto que los navegadores web (como Chrome, Firefox o Edge) aplican de forma automática a los elementos HTML.*/
+* {
+  /*El selector universal (*)*/
+  margin: 0;
+  /*Quita todo el espacio exterior de los elementos.*/
+  padding: 0;
+  /*Quita todo el relleno interior de los elementos.*/
+  box-sizing: border-box;
+  /*Cambia la forma en que el navegador calcula el ancho (width) y alto (height) total de una caja.*/
+}
+
+nav {
+  /*Este bloque sirve para crear una barra de navegación superior fija (sticky header) con un diseño en cuadrícula (CSS Grid) estructurado en 3 columnas y un fondo oscuro transparente.*/
+  position: fixed;
+  /*Fija la barra en la pantalla. Aunque el usuario haga scroll hacia abajo, la barra de navegación se quedará siempre visible arriba.*/
+  top: 0;
+  /*Pegan la barra exactamente al borde superior*/
+  left: 0;
+  /*Pegan la barra exactamente al borde izquierdo de la ventana.*/
+  z-index: 1000;
+  /*Coloca la barra en una capa muy alta en el eje Z para asegurar que pase por encima de cualquier otro contenido de la página (imágenes, textos, cards) al hacer scroll.*/
+  width: 100%;
+  /*Ocupa todo el ancho disponible de la pantalla.*/
+  height: 15vh;
+  /*Su altura equivale al 10% de la altura visible de la ventana (Viewport Height).*/
+  min-height: 4.375rem;
+  /*Define una altura mínima de $70\text{px}$ ($4.375 \times 16\text{px}$). Si la pantalla es muy pequeña, la barra nunca se encogerá por debajo de este tamaño para no deformar su contenido.*/
+  background-color: #0E1533;
+  /*Aplica un tono azul muy oscuro de fondo.*/
+  display: grid;
+  /*Convierte el contenedor <nav> en una cuadrícula CSS.*/
+  grid-template-columns: minmax(auto, 12rem) 1fr minmax(auto, 12rem);
+  /*Divide la barra en 3 columnas:*/
+  align-items: center;
+  /*Centra verticalmente todos los elementos dentro de la grilla.*/
+  padding: 0 10rem;
+  /*Aplica un espacio interno horizontal de 10rem (160px) en los laterales izquierdo y derecho (arriba y abajo deja $0$).*/
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
+  /*Agrega una línea sutil inferior de $1\text{px}$ ($0.0625\text{rem}$) de grosor con color blanco y $10\%$ de opacidad, dando un toque moderno de separación.*/
+}
+
+.logo-container {
+  /*Este bloque sirve para alinear y estructurar el contenedor del logo (por ejemplo, cuando tienes una imagen de icono acompañada del texto con el nombre de tu marca).*/
+  display: flex;
+  /*Convierte el contenedor en una caja flexible. Todos los elementos dentro de él (como una imagen <img> y un texto <span> o <h1>) se colocan uno al lado del otro en una sola línea horizontal por defecto.*/
+  align-items: center;
+  /*Centra verticalmente los elementos hijos. Si la imagen es más alta que el texto, el texto quedará perfectamente centrado respecto al centro del icono.*/
+  gap: 0.85rem;
+  /*Crea un espacio constante de 13.6px (0.85x16px) entre los elementos internos (entre la imagen y el texto), evitando tener que usar margin-right en la imagen.*/
+  justify-self: start;
+  /*Esta propiedad funciona porque este contenedor está ubicado dentro de una columna de grid (tu <nav>). Asegura que el logo se alinee completamente a la izquierda dentro del área de su primera columna en la grilla.*/
+  margin-left: 2rem;
+  /*Empuja el contenedor 32px (2 x 16px) hacia la derecha desde el borde izquierdo.*/
+}
+
+.menu {
+  /*Este bloque sirve para dar formato al menú principal de navegación (generalmente una lista desordenada <ul> con la clase .menu), alineando horizontalmente todos sus enlaces y centrándolos en la barra.*/
+  display: flex;
+  /*Por defecto, los elementos de una lista (<li>) se muestran verticalmente (uno debajo del otro). display: flex los convierte en un contenedor flexible y los coloca en una sola fila horizontal, uno al lado del otro.*/
+  list-style: none;
+  /*Elimina los puntos o viñetas negras que los navegadores colocan de forma predeterminada a las listas HTML (<ul> / <li>).*/
+  gap: 2.5rem;
+  /*Crea una separación uniforme de 40px (2.5x16px) entre cada ítem del menú (<li>), logrando que las opciones de navegación no queden pegadas entre sí sin necesidad de recurrir a márgenes individuales.*/
+  justify-self: center;
+}
+
+.logo-text {
+  /*Este bloque sirve para dar estilo al texto del nombre de tu marca o logotipo dentro del contenedor del logo.*/
+  color: aliceblue;
+  /*Define el Color*/
+  font-size: 1.5rem;
+  /*Establece el tamaño del texto en 24px (1.5x16px}$ de la base predeterminada del navegador). Es un tamaño adecuado para destacar como el título o marca de la barra.*/
+  font-family: "Space Grotesk", sans-serif;
+  /*tipografia*/
+  font-weight: 500;
+  /*Aplica un grosor Medio (Medium). Hace que las letras sean un poco más gruesas que el texto normal (400), pero sin llegar a ser una negrita pesada (700), dándole un aspecto moderno e industrial.*/
+}
+
+nav a {
+  /*Este bloque sirve para dar estilo a todos los enlaces (<a>) que se encuentren dentro de tu barra de navegación <nav>, definiendo su color original, quitando el subrayado por defecto y preparando una animación suave para cuando el usuario pase el cursor.*/
+  color: #abb3e0;
+  /*Se le da color al menù*/
+  text-decoration: none;
+  /*Los navegadores siempre le agregan una línea de subrayado a los enlaces. Esta propiedad la elimina por completo para dar un aspecto más limpio y moderno al menú.*/
+  font-size: 1.3rem;
+  /*Define el tamaño de la tipografía en 16.8px (1.05x16px). Es apenas un poco más grande que la letra estándar de lectura ($16\text{px}$), ideal para que los enlaces se lean con claridad.*/
+  transition: color 0.2s ease;
+  /*Le indica al navegador que si la propiedad color cambia (por ejemplo, cuando agregas la regla nav a:hover), el cambio no sea instantáneo, sino una transición fluida que dura 0.2 segundos con un ritmo de aceleración suave (ease).*/
+  font-family: "Inter", sans-serif;
+}
+
+nav a:hover {
+  /*Este bloque sirve para cambiar la apariencia de los enlaces de navegación cuando el usuario pasa el cursor (mouse) sobre ellos, creando un efecto interactivo de resaltado.*/
+  color: #F5F7FE;
+  /*Se asigna color*/
+}
+
+.logo {
+  /*altura logo*/
+  height: 2.5rem;
+  /*Definición de la altura del elemento.*/
+}
+
+.btn-registrarse {
+  /*Este bloque de CSS define el aspecto visual y el comportamiento interactivo del botón de registro de tu página web (los elementos HTML con la clase btn-registrarse). Controla su posición dentro de un contenedor Grid, sus colores, tamaño, bordes, tipografía y la animación suave cuando el usuario interactúa con él.*/
+  justify-self: end; 
+  /*Empuja el botón completamente hacia la derecha dentro de su celda en el contenedor Grid.*/
+  background-color: #5b7fff; 
+  /*Color botòn*/
+  color: #ffffff;
+  /*Color texto botòn*/
+  border: none;
+  /*Elimina el borde por defecto que los navegadores le ponen a los botones HTML.*/
+  padding: 0.9rem 1.4rem;
+  /*Crea espacio entre el texto y los bordes del botón para darle volumen:*/
+  font-size: 1rem;
+  /*Define que el texto dentro del botón mida 1rem (por defecto, equivale a 16px).*/
+  font-weight: 600;
+  /*Hace que el texto sea semi-negrita (semi-bold) para que destaque más dentro del botón.*/
+  border-radius: 0.5rem;
+  /*Le da bordes suavizados o redondeados al botón con un radio de 0.5rem (8px).*/
+  cursor: pointer;
+  /*Cambia el cursor de una flecha a una mano con el dedo índice levantado (pointer), indicando al usuario que el elemento es interactivo y se puede hacer clic.*/
+  transition: background-color 0.2s ease;
+  /*Hace que, al cambiar el color de fondo (por ejemplo, si usas :hover cuando el usuario pasa el cursor por encima), el cambio no sea brusco sino una animación fluida que dura 0.2 segundos con una velocidad suave (ease).*/
+  font-family: "Inter", sans-serif;
+}
+
+.btn-registrarse:hover {
+  /*Este bloque de CSS define el cambio de aspecto visual del botón de registro cuando el usuario pasa el puntero del ratón sobre él (efecto hover). Sirve para darle retroalimentación visual al usuario y confirmarle que el elemento es interactivo.*/
+  background-color: #808bb4;
+  /*Color de fondo*/
+}
+
+/****************************************************Hasta acá llega el estilo de nav y header************************************/
+/****************************************************responsive nav y header*******************************************************/
+@media (max-width: 48rem) {
+  /*Esta regla abre una Media Query (consulta de medios) en CSS. Sirve para aplicar estilos de diseño adaptativo o responsivo (Responsive Web Design).*/
+ 
+  nav {
+    /*Este bloque de código CSS aplica un conjunto de estilos a un elemento de navegación HTML (<nav>). Transforma la barra de menú en una estructura vertical fija en la pantalla.*/
+    padding: 0.8rem 1.5rem;
+    /*Establece el espacio interno (relleno) del menú.*/
+    height: auto;
+    /*Define que la altura de la barra se ajuste automáticamente según la cantidad de contenido que tenga dentro.*/
+    display: flex;
+    /*Activa el modelo de caja flexible (Flexbox). Permite organizar y distribuir los elementos hijos (como botones o enlaces) de forma fácil y controlada.*/
+    flex-direction: column;
+    /*Cambia la orientación predeterminada de Flexbox (que es en fila/horizontal) para que los elementos se apilen verticalmente (en columna), uno debajo de otro.*/
+    gap: 1rem;
+    /*Crea una separación de 1rem (aprox. 16px) entre cada uno de los elementos hijos dentro del <nav>, sin necesidad de usar márgenes individuales.*/
+  }
+
+  .logo-container {
+    /*Este bloque de CSS aplica una regla de alineación a cualquier elemento HTML que tenga la clase logo-container (class="logo-container").*/
+    justify-self: center;
+    margin-left: 0;
+  }
+
+  .menu {
+    /*Este bloque de CSS define la disposición interna del elemento con la clase .menu. Se asume que el contenedor padre ya tiene aplicado display: flex; previamente o en otra regla.*/
+    flex-direction: column;
+    /*Cambia la dirección del contenedor Flexbox para que los elementos hijos (enlaces, botones, ítems de lista) se organicen verticalmente, apilándose uno debajo de otro.*/
+    align-items: center;
+    /*Alinea horizontalmente todos los elementos hijos en el centro del eje transversal (en este caso, de izquierda a derecha, ya que la dirección es en columna). Evita que los ítems se estiren al 100% del ancho.*/
+    gap: 0.8rem;
+  }
+
+  .contenido h1 {
+    /*Este bloque de CSS aplica un tamaño de letra específico al título principal*/
+    font-size: 1.8rem;
+  }
+
+  .contenido p {
+    /*Este bloque de CSS establece el tamaño de letra de los párrafos (<p>) situados dentro de un contenedor con la clase .contenido.*/
+    font-size: 1rem;
+  }
+}
+
+/*******************************************************Hasta acá llega el responsive de nav y header********************************************************/
+/*******************************************************Responsive info 1***********************************************************************************/
+/* 1. Pantallas plegables pequeñas y celulares antiguos (hasta 360px) */
+@media (max-width: 360px) {
+  .contenido h1 {
+    font-size: 1.6rem;
+  }
+
+  .contenido p {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* 2. Celulares estándar (iPhone, Samsung Galaxy, etc. - hasta 480px) */
+@media (max-width: 480px) {
+  .info_1 {
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1rem;
+    height: auto;
+    min-height: auto;
+  }
+
+  .contenido {
+    margin-left: 0;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contenido h1 {
+    font-size: 2rem;
+  }
+
+  .contenido p {
+    font-size: 1rem;
+  }
+
+  .reservar {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secundario {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* 3. Celulares grandes, Phablets y Pro Max (hasta 600px) */
+@media (max-width: 600px) {
+  .contenido h1 {
+    font-size: 2.3rem;
+  }
+}
+
+/* 4. Tablets pequeñas o celulares en modo horizontal (hasta 768px) */
+@media (max-width: 768px) {
+  .info_1 {
+    flex-direction: column;
+    padding: 2.5rem 1.5rem;
+    height: auto;
+  }
+
+  .contenido {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+/*******************************************************Fin responsive info 1*******************************************************************************/
+/******************************************************Inicia el estilo de la info1**************************************************************************/
+.info_1 {
+  background-color: #F5F7FE ;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+
+  width: 100%;
+  min-height: 100vh;
+
+  margin-top: 4.375rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contenido {
+  max-width: 32rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 18rem;
+}
+
+.contenido h1 {
+  color: #4C5480;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.contenido p {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.reservar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #5b7fff;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.9rem 1.6rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #4365e2;
+}
+
+.btn-secundario {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.btn-secundario:hover {
+  opacity: 0.8;
+}
+
+/**************************************************************Finaliza infor 1*******************************************************************************/
+/*************************************************************tarjeta1****************************************************************************************/
+.card-1 {
+  background-color: #131B3E;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  width: 26rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.4);
+  margin-right: 13rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-subtitle {
+  color: #64748B;
+  font-size: 0.9rem;
+}
+
+.badge-status {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+
+.card-amount {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.amount-label {
+  color: #64748B;
+  font-size: 0.9rem;
+}
+
+.amount-val {
+  color: #FFFFFF;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 4.5rem;
+  padding: 0.5rem 0;
+  gap: 8px;
+}
+
+.bar {
+  width: 1.6rem;
+  background-color: #1E295D;
+  border-radius: 0.25rem 0.25rem 0 0;
+  transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.bar.active {
+  background-color: #5b7fff;
+}
+
+.bar-25 { height: 25%; }
+.bar-30 { height: 30%; }
+.bar-40 { height: 40%; }
+.bar-50 { height: 50%; }
+.bar-60 { height: 60%; }
+.bar-80 { height: 80%; }
+.bar-90 { height: 90%; }
+
+.gastos-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.gastos-list li {
+  display: flex;
+  align-items: center;
+  color: #E2E8F0;
+  font-size: 0.95rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.dot-blue { background-color: #5b7fff; }
+.dot-green { background-color: #10B981; }
+.dot-purple { background-color: #8B5CF6; }
+
+.gasto-nombre {
+  flex-grow: 1;
+}
+
+.gasto-monto {
+  font-weight: 600;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.alerta-gasto {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.85rem;
+}
+
+.alerta-gasto p {
+  color: #F87171;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.barra {
+  background-color: #0E1533;
+  width: 100%;
+  height: 0.09rem;
+  margin-top: -2.4rem;
+}
+
+/************************************************************************Finaliza tarjeta1**************************************************************************/
+/*********************************************************************** responsive  info 1 tarjeta****************************************************************/
+/* Pantallas grandes y portátiles (Reducción de márgenes excesivos)*/
+@media (max-width: 1400px) {
+  .contenido {
+    margin-left: 5rem;
+  }
+
+  .card-1 {
+    margin-right: 5rem;
+  }
+}
+
+/* Tablets en modo Horizontal y Desktop Pequeño */
+@media (max-width: 1024px) {
+  .info_1 {
+    padding: 4rem 2rem;
+    gap: 2rem;
+  }
+
+  .contenido {
+    margin-left: 0;
+  }
+
+  .card-1 {
+    margin-right: 0;
+  }
+
+  .contenido h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Tablets en Vertical y Dispositivos Móviles (Alineación en columna) */
+@media (max-width: 768px) {
+  .info_1 {
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    height: auto;
+  }
+
+  .contenido {
+    margin-left: 0;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contenido h1 {
+    font-size: 2.5rem;
+  }
+
+  .reservar {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .card-1 {
+    margin-right: 0;
+    width: 100%;
+    max-width: 26rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Móviles Pequeños */
+@media (max-width: 480px) {
+  .contenido h1 {
+    font-size: 2rem;
+  }
+
+  .contenido p {
+    font-size: 1rem;
+  }
+
+  .reservar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secundario {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-1 {
+    padding: 1.25rem;
+  }
+
+  .amount-val {
+    font-size: 2rem;
+  }
+
+  .barra {
+    background-color: #ffffff;
+    width: 100%;
+    height: 0.06rem;
+    margin-top: -2.4rem;
+    opacity: 0.9;
+  }
+}
+
+/***************************************************************************************Fin responsive info1 tarjeta 1*******************************************/
+/*****************************************************************************estilos infor y tarjeta 2*******************************************************************/
+
+.info_2 {
+  background-color: #F5F7FE;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+
+  width: 100%;
+  min-height: 100vh;
+
+  margin-top: 0rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.contenido1 {
+  max-width: 32rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 18rem;
+}
+
+.contenido1 h2 {
+  color: #4C5480;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.contenido1 p {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.card2 {
+  margin-right: 10rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.chart-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-container {
+  background-color: #121831;
+  border: 1px solid #1e284a;
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.chart-area {
+  position: relative;
+  height: 140px;
+  width: 100%;
+}
+
+.curve-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.dots-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #638eff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(99, 142, 255, 0.4);
+}
+
+.total-badge {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background-color: rgba(18, 24, 49, 0.85);
+  border: 1px solid #38518e;
+  border-radius: 10px;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.total-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #7991c4;
+  letter-spacing: 1.5px;
+  margin-bottom: 2px;
+}
+
+.total-amount {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.base-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #1e2a4a;
+}
+
+.chart-legend {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.4;
+  padding-left: 4px;
+ 
+}
+
+
+.dots-container {
+  position: relative;
+  width: 100%;
+  height: 6.25rem; 
+}
+
+
+.dot {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem; 
+  background-color: #333;
+  border-radius: 50%;
+}
+
+
+.dot-1 {
+  margin-top: 6.1rem;
+  background-color: #7991c4;
+  left: 5%;
+}
+
+.dot-2 {
+  margin-top: 7rem;
+  background-color: #7991c4;
+  left: 15%;
+}
+
+.dot-3 {
+  margin-top: 6.1rem;
+  background-color: #7991c4;
+  left: 25%;
+  
+}
+
+.dot-4 {
+  margin-top: 7rem;
+  background-color: #7991c4;
+  left: 33%;
+}
+
+.dot-5 {
+ margin-top: 6rem;
+  background-color: #7991c4;
+  left: 40%;
+}
+
+.dot-6 {
+  margin-top: 5rem;
+  background-color: #7991c4;
+  left: 50%;
+}
+
+.dot-7 {
+margin-top: 6rem;
+  background-color: #7991c4;
+  left: 59%;
+}
+
+.dot-8 {
+ margin-top: 5rem;
+  background-color: #7991c4;
+  left: 66%;
+}
+
+
+
+.barra2 {
+  background-color: #0E1533;
+  width: 100%;
+  height: 0.09rem;
+  margin-top: -2.4rem;
+  opacity: 0.5;
+}
+
+/**********************************************************************************Finde estilo de info 2 y tarjeta 2*******************************************************************************/
+/*******************************************************************************Inicia el responsive de info 2 y tarjeta 2**************************************************************************/
+
+/* Ajuste general para contenedores en pantallas grandes/laptops */
+@media (max-width: 1400px) {
+  .contenido1 {
+    margin-left: 5rem;
+  }
+
+  .card2 {
+    margin-right: 5rem;
+  }
+}
+
+/* Tablets (1024px o menos) */
+@media (max-width: 1024px) {
+  .info_2 {
+    padding: 4rem 2rem;
+    gap: 2rem;
+  }
+
+  .contenido1 {
+    margin-left: 0;
+    max-width: 50%;
+  }
+
+  .contenido1 h2 {
+    font-size: 2.2rem;
+  }
+
+  .card2 {
+    margin-right: 0;
+    max-width: 45%;
+  }
+}
+
+/* Celulares y Tablets verticales (768px o menos) */
+@media (max-width: 768px) {
+  .info_2 {
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    height: auto;
+    min-height: auto;
+    gap: 2.5rem;
+  }
+
+  .contenido1 {
+    margin-left: 0;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .contenido1 h2 {
+    font-size: 2rem; /* Tamaño de texto más cómodo para celular */
+  }
+
+  .card2 {
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .chart-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/* Celulares pequeños (hasta 480px) */
+@media (max-width: 480px) {
+  .contenido1 h2 {
+    font-size: 1.75rem;
+  }
+
+  .contenido1 p {
+    font-size: 1rem;
+  }
+
+  .card-container {
+    padding: 20px 16px;
+  }
+
+  .total-badge {
+    padding: 6px 10px;
+  }
+
+  .total-amount {
+    font-size: 0.95rem;
+  }
+}
+/*******************************************************************************Fin responsive de info2 y tarjeta 2*********************************************************************************/
+/******************************************************************************Inicia estilo info3 y tarjeta3**************************************************************************************/
+.info_3 {
+  background-color: #F5F7FE;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+
+  width: 100%;
+  min-height: 100vh;
+
+  margin-top: 0rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.contenido2 {
+  max-width: 42rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 18rem;
+  margin-top: 8rem;
+}
+
+
+ .contenido2 h2 {
+  color: #4C5480;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+
+.contenido2 p {
+   color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+
+
+
+
+.lineas{
+  display: flex;
+  gap: 1.5rem;
+  width: 60%;
+  box-sizing: border-box;
+  margin-top: 5rem;
+  margin-left: 18rem;
+}
+
+.step-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+
+.step-line {
+  width: 100%;
+  height: 0.125rem; 
+  background-color: #4f75ff;
+}
+
+
+.step-number {
+  color: #4f75ff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sub1 {
+color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-top: 4rem;
+  margin-left: 18rem;
+
+}
+
+.text1 {
+ color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+   max-width: 20rem;
+   margin-left: 18rem;
+   margin-top: 1rem;
+}
+
+.sub2 {
+color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-top: -8.7rem;
+  margin-left: 34.5em;
+
+}
+
+.text2 {
+ color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+   max-width: 20rem;
+   margin-left: 39.9rem;
+   margin-top: 1.2rem;
+}
+
+.sub3 {
+color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-top: -8.7rem;
+  margin-left: 53em;
+
+}
+
+.text3 {
+ color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+   max-width: 20rem;
+   margin-left: 61rem;
+   margin-top: 1.2rem;
+}
+
+
+.barra3 {
+  background-color: #0E1533;
+  width: 100%;
+  height: 0.09rem;
+  margin-top: 5rem;
+}
+
+/******************************************************************************Fin estilo info3 y tarjeta3*****************************************************************************************/

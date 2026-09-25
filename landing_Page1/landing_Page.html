@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <title>Moneta — Control de gastos personales</title>
+    <link rel="icon" type="image/svg+xml" href="img/moneta-isologo.svg">
+    <link rel="stylesheet" href="style_landing.css">
+</head>
+
+<body>
+    <!---------------------------------------------------------------------------------- Empieza el header y nav ------------------------------------------------>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="./img/moneta-isologo.svg" alt="Logo Moneta" class="logo">
+                <p class="logo-text">Moneta</p>
+            </div>
+            <ul class="menu">
+                <li><a href="#hormiga">El gasto hormiga</a></li>
+                <li><a href="#como-funciona">Cómo funciona</a></li>
+                <li><a href="#bolsillo-inteligente">Bolsillo inteligente</a></li>
+            </ul>
+            <button class="btn-registrarse">Registrarse</button>
+        </nav>
+    </header>
+    <!-------------------------------------------------------------------------------------Main------------------------------------------------------------------>
+
+    <main>
+        <!-------------------------------------------------------------------------------------info1 y tarjeta---------------------------------------------------------------->
+        <section class="info_1">
+            <div class="contenido">
+                <h1>Cada peso que gastas, queda registrado.</h1>
+                <p>Moneta es la app para llevar el control de tus finanzas personales: sube tus comprobantes de
+                    transferencia y tus tirillas de compra, y entérate exactamente en qué se te va la plata cada mes.
+                </p>
+
+                <div class="reservar">
+                    <button class="btn-primary">Reservar mi cupo</button>
+                    <a href="#como-funciona" class="btn-secundario">Ver cómo funciona</a>
+                </div>
+            </div>
+
+            <div class="card-1">
+                <div class="card-header">
+                    <span class="card-subtitle">Resumen de octubre</span>
+                    <span class="badge-status">Al día</span>
+                </div>
+
+                <div class="card-amount">
+                    <span class="amount-label">Disponible este mes</span>
+                    <h2 class="amount-val">$612.450</h2>
+                </div>
+
+                <div class="chart-bars">
+                    <div class="bar bar-30"></div>
+                    <div class="bar bar-50"></div>
+                    <div class="bar active bar-90"></div>
+                    <div class="bar bar-40"></div>
+                    <div class="bar bar-60"></div>
+                    <div class="bar active bar-80"></div>
+                    <div class="bar bar-25"></div>
+                </div>
+
+                <ul class="gastos-list">
+                    <li>
+                        <span class="dot dot-blue"></span>
+                        <span class="gasto-nombre">Tienda D1</span>
+                        <span class="gasto-monto">$8.400</span>
+                    </li>
+                    <li>
+                        <span class="dot dot-green"></span>
+                        <span class="gasto-nombre">Uber</span>
+                        <span class="gasto-monto">$12.300</span>
+                    </li>
+                    <li>
+                        <span class="dot dot-purple"></span>
+                        <span class="gasto-nombre">Café</span>
+                        <span class="gasto-monto">$4.500</span>
+                    </li>
+                </ul>
+
+                <div class="alerta-gasto">
+                    <p>3 gastos hormiga detectados esta semana — suman $27.200 en cosas pequeñas.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="barra"></div>
+        <!---------------------------------------------------------------------------Fin info 2 y tarjeta2------------------------------------------------------------------>
+
+        <section class="info_2">
+            <div class="contenido1">
+                <h2 id="hormiga">El gasto hormiga es el que más duele, porque no lo ves.</h2>
+                <p>
+                    Un café, una propina, una recarga, una bolsa de mecato. Cada uno parece
+                    <strong>demasiado pequeño para anotar</strong>, y por eso nunca aparece
+                    en el presupuesto — hasta que a fin de mes falta plata y nadie sabe por qué.
+                </p>
+                <p>
+                    Moneta no te deja saltarte nada: cada transferencia, cada tirilla,
+                    cada recibo se sube y se suma. Si gastaste, queda registrado.
+                </p>
+            </div>
+
+            <div class="card2">
+                <div class="chart-card">
+                    <div class="card-container">
+                        <div class="chart-area">
+                            <svg class="curve-line" viewBox="0 0 400 120" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 20 90 Q 200 10 320 60" stroke="#5c73a8" stroke-dasharray="3 4"
+                                    stroke-width="1.5" />
+                            </svg>
+
+                            <div class="dots-container">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>
+                                <span class="dot dot-3"></span>
+                                <span class="dot dot-4"></span>
+                                <span class="dot dot-5"></span>
+                                <span class="dot dot-6"></span>
+                                <span class="dot dot-7"></span>
+                                <span class="dot dot-8"></span>
+                            </div>
+
+                            <div class="total-badge">
+                                <span class="total-label">TOTAL</span>
+                                <span class="total-amount">$91.300</span>
+                            </div>
+
+                            <div class="base-line"></div>
+                        </div>
+                    </div>
+
+                    <p class="chart-legend">
+                        9 gastos "pequeños" en una semana, sumados en una sola cifra.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="barra2"></div>
+
+        <!---------------------------------------------------------------------------Fin info3 y 3------------------------------------------------------------------>
+        <section>
+            <div class="contenido2">
+                <h2 id="como-funciona">Tres pasos, y tus finanzas dejan de ser un misterio.</h2>
+                <p>Sin categorías complicadas ni hojas de cálculo. Tú registras, Moneta organiza.</p>
+            </div>
+
+            <div class="lineas">
+                <div class="step-item">
+                    <div class="step-line"></div>
+                    <span class="step-number">01</span>
+                </div>
+                <div class="step-item">
+                    <div class="step-line"></div>
+                    <span class="step-number">02</span>
+                </div>
+                <div class="step-item">
+                    <div class="step-line"></div>
+                    <span class="step-number">03</span>
+                </div>
+            </div>
+            <section class="info1">
+                <h3 class="sub1">Registra cada gasto</h3>
+                <p class="text1">Apenas gastes, sube la foto del recibo, la tirilla o el comprobante de la
+                    transferencia. Toma diez segundos.</p>
+            </section>
+            </section">
+
+             <section class="info2">
+                <h3 class="sub2">Deja que Moneta organice</h3>
+                <p class="text2">Cada gasto se clasifica solo por categoría, para que veas de un vistazo en qué se te va la plata este mes.</p>
+            </section>
+            </section">
+
+            <section class="info3">
+                <h3 class="sub3">Cuida tu bolsillo</h3>
+                <p class="text3">Recibe recomendaciones sobre lo que te va sobrando y alertas antes de que tu cuenta se quede en ceros.</p>
+            </section>
+            </section">
+<div class="barra3"></div>
+    </main>
+</body>
+
+</html>
