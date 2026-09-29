@@ -25,11 +25,13 @@
                 <li><a href="#como-funciona">Cómo funciona</a></li>
                 <li><a href="#bolsillo-inteligente">Bolsillo inteligente</a></li>
             </ul>
-            <button class="btn-registrarse">Registrarse</button>
+            <a href="#formulario">
+                <button class="btn-registrarse">Registrarse</button>
+            </a>
         </nav>
     </header>
-    <!-------------------------------------------------------------------------------------Main------------------------------------------------------------------>
 
+    <!-------------------------------------------------------------------------------------Main------------------------------------------------------------------>
     <main>
         <!-------------------------------------------------------------------------------------info1 y tarjeta---------------------------------------------------------------->
         <section class="info_1">
@@ -40,7 +42,9 @@
                 </p>
 
                 <div class="reservar">
-                    <button class="btn-primary">Reservar mi cupo</button>
+                    <a href="#formulario">
+                        <button class="btn-primary">Reservar mi cupo</button>
+                    </a>
                     <a href="#como-funciona" class="btn-secundario">Ver cómo funciona</a>
                 </div>
             </div>
@@ -91,8 +95,8 @@
         </section>
 
         <div class="barra"></div>
-        <!---------------------------------------------------------------------------Fin info 2 y tarjeta2------------------------------------------------------------------>
 
+        <!---------------------------------------------------------------------------Fin info 2 y tarjeta2------------------------------------------------------------------>
         <section class="info_2">
             <div class="contenido1">
                 <h2 id="hormiga">El gasto hormiga es el que más duele, porque no lo ves.</h2>
@@ -147,7 +151,7 @@
         <div class="barra2"></div>
 
         <!---------------------------------------------------------------------------Fin info3 y 3------------------------------------------------------------------>
-        <section>
+        <section class="info_3">
             <div class="contenido2">
                 <h2 id="como-funciona">Tres pasos, y tus finanzas dejan de ser un misterio.</h2>
                 <p>Sin categorías complicadas ni hojas de cálculo. Tú registras, Moneta organiza.</p>
@@ -167,26 +171,129 @@
                     <span class="step-number">03</span>
                 </div>
             </div>
+
             <section class="info1">
                 <h3 class="sub1">Registra cada gasto</h3>
                 <p class="text1">Apenas gastes, sube la foto del recibo, la tirilla o el comprobante de la
                     transferencia. Toma diez segundos.</p>
             </section>
-            </section">
 
-             <section class="info2">
+            <section class="info2">
                 <h3 class="sub2">Deja que Moneta organice</h3>
-                <p class="text2">Cada gasto se clasifica solo por categoría, para que veas de un vistazo en qué se te va la plata este mes.</p>
+                <p class="text2">Cada gasto se clasifica solo por categoría, para que veas de un vistazo en qué se te va
+                    la plata este mes.</p>
             </section>
-            </section">
 
             <section class="info3">
                 <h3 class="sub3">Cuida tu bolsillo</h3>
-                <p class="text3">Recibe recomendaciones sobre lo que te va sobrando y alertas antes de que tu cuenta se quede en ceros.</p>
+                <p class="text3">Recibe recomendaciones sobre lo que te va sobrando y alertas antes de que tu cuenta se
+                    quede en ceros.</p>
             </section>
-            </section">
-<div class="barra3"></div>
+        </section>
+
+        <div class="barra3"></div>
+
+        <!---------------------------------------------------------------------------Fin info4 y 4------------------------------------------------------------------>
+        <section class="info4">
+            <div class="contenido3">
+                <h2>Un bolsillo inteligente para lo que te va sobrando.</h2>
+                <p class="i1">Cuando gastas menos de lo previsto, esa diferencia no se pierde de vista: Moneta te la
+                    separa y te sugiere qué hacer con ella.</p>
+                <p class="i2">Aparta automáticamente lo que te sobró de tu presupuesto del mes.</p>
+                <p class="i3">Te recomienda si te conviene ahorrarlo, adelantar un pago o darte un gusto puntual.</p>
+                <p class="i4">Muestra tu avance hacia la meta de ahorro que tú definas.</p>
+            </div>
+
+            <article class="card" id="bolsillo-inteligente">
+                <header class="card-header">
+                    <span class="card-subtitle">Bolsillo de ahorro — Vacaciones</span>
+                    <h2 class="card-amount">$487.000</h2>
+                </header>
+
+                <section class="progress-section">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 64%;"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span class="progress-percentage">64% de la meta</span>
+                        <span class="progress-target">Meta: $760.000</span>
+                    </div>
+                </section>
+
+                <ul class="insights-list">
+                    <li class="insight-item">
+                        Este mes gastaste $38.000 menos en domicilios. Podrías moverlos al bolsillo.
+                    </li>
+                    <li class="insight-item">
+                        Te sobran 6 días de presupuesto de transporte. Vas bien.
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <div class="barra4"></div>
+
+        <!---------------------------------------------------------------------------Fin info5 y tarjeta------------------------------------------------------------------>
+        <section class="info5">
+            <div class="alerta">
+                <span class="pun"></span>
+                <span>Saldo bajo</span>
+            </div>
+
+            <h2>Antes de que te quedes en ceros, te avisamos.</h2>
+            <p>Moneta vigila tu saldo disponible frente a lo que ya tienes comprometido en el mes, y te avisa a tiempo —
+                no cuando ya es tarde.</p>
+        </section>
+
+        <article class="notificacion">
+            <header class="notification-header">
+                <span class="app-name">Moneta</span>
+                <time class="notification-time">ahora</time>
+            </header>
+            <div class="notification-body">
+                <p class="notification-text">
+                    Te quedan $23.000 disponibles y aún faltan 9 días de mes. Revisa tus gastos hormiga de esta semana.
+                </p>
+            </div>
+        </article>
+
+        <div class="barra5"></div>
+
+        <!---------------------------------------------------------------------------formulario------------------------------------------------------------------>
+        <section  class="f1">
+            <div class="cuadro-formulario" id="formulario">
+            <div class="titulo-sub">
+                <h2>Empieza a inscribirte</h2>
+                <p>Completa este formulario para reservar tu cupo. Luego, desde la app móvil terminas de crear tu
+                    usuario y tu contraseña.</p>
+            </div>
+
+            <form class="formulario1" action="url donde se va a enviar el formulario" method="post">
+                <label class="form1" for="nombre">Nombre de Usuario:</label>
+                <input type="text" id="nombre" name="username" placeholder="Ej: Cristian Alvarez" required>
+
+                <label class="form2" for="celu">Número de Celular:</label>
+                <input type="number" id="celu" name="celular" placeholder="Ej: 3008796520" required>
+
+                <label class="form3" for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="email" placeholder="Ej: moneta@gmail.com" required>
+
+                <label class="form4" for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="city" placeholder="Ej: Bello,Antioquia" required>
+
+                <label class="checkbox">
+                    <input type="checkbox" required>
+                    <span>Acepto que Moneta guarde mis datos para crear mi cuenta y me contacte para continuar el
+                        registro en la app móvil.</span>
+                </label>
+
+                <button type="submit" class="bt1">Registrarse</button>
+
+                <span class="tx1">La contraseña se crea directamente en la app móvil, no aquí. Este formulario solo reserva tu cupo.</span>
+            </form>
+            </div>
+        </section>
     </main>
 </body>
 
-</html>
+</html> 
