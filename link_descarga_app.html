@@ -1,203 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Moneta — Descarga la aplicación</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjQiIHkxPSI0IiB4Mj0iNjAiIHkyPSI2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzRDZCRkYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEUxNTMzIi8+CiAgICA8L2xpbmYXJHJhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdyZWVuR3JhZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMTYiIHkyPSIxMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3Q0U4QjQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTJCNEEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNiIgZmlsbD0idXJsKCNiZ0dyYWQpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzYsOSkgcm90YXRlKDE4KSI+CiAgICA8cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMTAiIHJ4PSIyLjQiIGZpbGw9InVybCgjZ3JlZW5HcmFkKSIvPgogIDwvZz4KICA8cmVjdCB4PSIxMyIgeT0iMjIiIHdpZHRoPSIzOCIgaGVpZ2h0PSIyOCIgcng9IjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzLjIiLz4KICA8Y2lyY2xlIGN4PSI0NSIgY3k9IjM2IiByPSIyLjYiIGZpbGw9IiNGRkZGRkYiLz4KICA8cGF0aCBkPSJNMjAgNDYgTDIwIDMwIEwzMiA0MCBMNDQgMzAgTDQ0IDQ2IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Moneta — Descarga la aplicación</title>
+  
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon / Icono de pestaña -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjQiIHkxPSI0IiB4Mj0iNjAiIHkyPSI2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzRDZCRkYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEUxNTMzIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJncmVlbkdyYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjE2IiB5Mj0iMTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN0NFOEI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzEyQjRBMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjYmdHcmFkKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM2LDkpIHJvdGF0ZSgxOCkiPgogICAgPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiByeD0iMi40IiBmaWxsPSJ1cmwoI2dyZWVuR3JhZCkiLz4KICA8L2c+CiAgPHJlY3QgeD0iMTM3IHk9IjIyIiB3aWR0aD0iMzgiIGhlaWdodD0iMjgiIHJ4PSI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIi8+CiAgPGNpcmNsZSBjeD0iNDUiIGN5PSIzNiIgcj0iMi42IiBmaWxsPSIjRkZGRkZGIi8+CiAgPHBhdGggZD0iTTIwIDQ2IEwyMCAzMCBMMzIgNDAgTDQ0IDMwIEw0NCA0NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4=">
 
-<style>
-  :root {
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-
-    --bg: #F5F7FE;
-    --bg-2: #FFFFFF;
-    --card: #EDF1FD;
-    --line: #DCE3F7;
-    --ink: #10173A;
-    --ink-soft: #4C5480;
-    --ink-faint: #8791BB;
-
-    --blue: #2F5BFF;
-    --blue-deep: #1E3FCC;
-    --blue-ink: #F2F5FF;
-    --blue-pale: #E7ECFE;
-
-    --teal: #12B4A0;
-    --teal-bg: #E4F8F5;
-    --alert: #D94F4F;
-    --alert-bg: #FBEAEA;
-
-    --shadow: rgba(47, 91, 255, 0.14);
-
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-ui: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0B0F26;
-      --bg-2: #131834;
-      --card: #171D3E;
-      --line: #2A3160;
-      --ink: #EEF1FE;
-      --ink-soft: #ABB3E0;
-      --ink-faint: #6C74A3;
-      --blue: #5B7FFF;
-      --blue-deep: #7C9AFF;
-      --blue-ink: #0E1230;
-      --blue-pale: #1B2350;
-      --teal: #3FD6C0;
-      --teal-bg: #0E2A26;
-      --alert: #F08080;
-      --alert-bg: #351A1A;
-      --shadow: rgba(0, 0, 0, 0.45);
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #0B0F26; --bg-2: #131834; --card: #171D3E; --line: #2A3160;
-    --ink: #EEF1FE; --ink-soft: #ABB3E0; --ink-faint: #6C74A3;
-    --blue: #5B7FFF; --blue-deep: #7C9AFF; --blue-ink: #0E1230; --blue-pale: #1B2350;
-    --teal: #3FD6C0; --teal-bg: #0E2A26; --alert: #F08080; --alert-bg: #351A1A;
-    --shadow: rgba(0, 0, 0, 0.45);
-  }
-
-  *, *::before, *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    min-height: 100vh;
-    background-color: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-ui);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-  }
-
-  .download-card {
-    background: var(--bg-2);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 40px 32px;
-    max-width: 440px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 16px 32px var(--shadow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .app-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .app-brand h1 {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-  }
-
-  .card-title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--ink);
-  }
-
-  .card-subtitle {
-    font-size: 0.95rem;
-    color: var(--ink-soft);
-    margin-bottom: 28px;
-    line-height: 1.5;
-  }
-
-  /* Animación de la flecha */
-  .arrow-icon {
-    width: 40px;
-    height: 40px;
-    color: var(--blue);
-    margin-bottom: 16px;
-    animation: bounce 1.8s infinite;
-  }
-
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(8px); }
-    60% { transform: translateY(4px); }
-  }
-
-  .download-btn {
-    width: 100%;
-    background-color: var(--blue);
-    color: #FFFFFF;
-    font-family: var(--font-ui);
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 16px 24px;
-    border-radius: 14px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-  }
-
-  .download-btn:hover {
-    background-color: var(--blue-deep);
-    transform: translateY(-1px);
-  }
-
-  .download-btn:active {
-    transform: translateY(0);
-  }
-
-  .footer-logo {
-    margin-top: 36px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .footer-logo svg {
-    width: 52px;
-    height: 52px;
-  }
-
-  .footer-text {
-    font-size: 0.8rem;
-    color: var(--ink-faint);
-    font-weight: 500;
-  }
-</style>
+  <!-- Vincular el archivo de estilos externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <main class="download-card">
     
+    <!-- Encabezado con Logo y Nombre -->
     <div class="app-brand">
-      <!-- Logo Moneta SVG -->
       <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="bgGrad" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
@@ -220,20 +44,21 @@
       <h1>Moneta</h1>
     </div>
 
+    <!-- Título y descripción -->
     <h2 class="card-title">Descarga la aplicación</h2>
     <p class="card-subtitle">Toma el control total de tus gastos e ingresos personales desde tu dispositivo.</p>
 
-    <!-- Flecha indicadora animada -->
+    <!-- Flecha animada -->
     <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
     </svg>
 
-    <!-- AQUÍ PEGAS EL ENLACE DE TU APLICACIÓN -->
+    <!-- Botón de Descarga (reemplaza href con tu enlace) -->
     <a href="AQUÍ_VA_TU_ENLACE_DE_DESCARGA" class="download-btn">
       Descargar APK / App
     </a>
 
-    <!-- Logo e identificador inferior -->
+    <!-- Logo e identificador del pie de página -->
     <div class="footer-logo">
       <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
         <defs>
