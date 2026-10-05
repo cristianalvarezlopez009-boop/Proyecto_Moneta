@@ -1,614 +1,731 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Space+Grotesk:wght@500&display=swap');
 /*Sirve para importar fuentes tipográficas externas desde Google Fonts directamente a tu archivo CSS, permitiéndote usarlas en tu sitio web sin necesidad de descargarlas o instalarlas en la computadora.*/
 
-/*Sirve para eliminar los márgenes e inconsistencias por defecto que los navegadores web (como Chrome, Firefox o Edge) aplican de forma automática a los elementos HTML.*/
+/*Este bloque sirve para realizar un reseteo global de los estilos predeterminados de todos los elementos HTML en el navegador, asegurando un diseño consistente.*/
 * {
-  /*El selector universal (*)*/
   margin: 0;
-  /*Quita todo el espacio exterior de los elementos.*/
+  /*Quita todo el espacio exterior (margen) por defecto de los elementos.*/
   padding: 0;
-  /*Quita todo el relleno interior de los elementos.*/
+  /*Quita todo el espacio interior (relleno) por defecto de los elementos.*/
   box-sizing: border-box;
-  /*Cambia la forma en que el navegador calcula el ancho (width) y alto (height) total de una caja.*/
+  /*Cambia la forma en que el navegador calcula el ancho y alto total, incluyendo padding y border dentro de la medida dada.*/
 }
 
+/*Este bloque sirve para crear la barra de navegación fija en la parte superior con un diseño en cuadrícula (CSS Grid).*/
 nav {
-  /*Este bloque sirve para crear una barra de navegación superior fija (sticky header) con un diseño en cuadrícula (CSS Grid) estructurado en 3 columnas y un fondo oscuro transparente.*/
   position: fixed;
-  /*Fija la barra en la pantalla. Aunque el usuario haga scroll hacia abajo, la barra de navegación se quedará siempre visible arriba.*/
+  /*Fija la barra en la pantalla para que permanezca visible al hacer scroll.*/
   top: 0;
-  /*Pegan la barra exactamente al borde superior*/
+  /*Pega la barra exactamente al borde superior de la ventana.*/
   left: 0;
-  /*Pegan la barra exactamente al borde izquierdo de la ventana.*/
+  /*Pega la barra exactamente al borde izquierdo de la ventana.*/
   z-index: 1000;
-  /*Coloca la barra en una capa muy alta en el eje Z para asegurar que pase por encima de cualquier otro contenido de la página (imágenes, textos, cards) al hacer scroll.*/
+  /*Coloca la barra en una capa superior para que pase por encima del resto del contenido.*/
   width: 100%;
-  /*Ocupa todo el ancho disponible de la pantalla.*/
+  /*Ocupa el 100% del ancho horizontal disponible de la ventana.*/
   height: 15vh;
-  /*Su altura equivale al 10% de la altura visible de la ventana (Viewport Height).*/
+  /*Establece la altura equivalente al 15% del alto de la ventana visible.*/
   min-height: 4.375rem;
-  /*Define una altura mínima de $70\text{px}$ ($4.375 \times 16\text{px}$). Si la pantalla es muy pequeña, la barra nunca se encogerá por debajo de este tamaño para no deformar su contenido.*/
+  /*Garantiza una altura mínima de 70px para no comprimir los elementos internos.*/
   background-color: #0E1533;
-  /*Aplica un tono azul muy oscuro de fondo.*/
+  /*Aplica un color de fondo azul muy oscuro.*/
   display: grid;
-  /*Convierte el contenedor <nav> en una cuadrícula CSS.*/
+  /*Activa el modelo de caja en cuadrícula CSS Grid.*/
   grid-template-columns: minmax(auto, 12rem) 1fr minmax(auto, 12rem);
-  /*Divide la barra en 3 columnas:*/
+  /*Divide el contenedor en 3 columnas: dos laterales adaptables y una central flexible.*/
   align-items: center;
-  /*Centra verticalmente todos los elementos dentro de la grilla.*/
+  /*Centra todos los elementos verticalmente dentro de la grilla.*/
   padding: 0 10rem;
-  /*Aplica un espacio interno horizontal de 10rem (160px) en los laterales izquierdo y derecho (arriba y abajo deja $0$).*/
+  /*Agrega un espacio interno de 160px únicamente a los lados izquierdo y derecho.*/
   border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
-  /*Agrega una línea sutil inferior de $1\text{px}$ ($0.0625\text{rem}$) de grosor con color blanco y $10\%$ de opacidad, dando un toque moderno de separación.*/
+  /*Añade una línea divisoria inferior de 1px casi transparente.*/
 }
 
+/*Este bloque sirve para alinear y estructurar la marca/logotipo (imagen e icono) en la barra de navegación.*/
 .logo-container {
-  /*Este bloque sirve para alinear y estructurar el contenedor del logo (por ejemplo, cuando tienes una imagen de icono acompañada del texto con el nombre de tu marca).*/
   display: flex;
-  /*Convierte el contenedor en una caja flexible. Todos los elementos dentro de él (como una imagen <img> y un texto <span> o <h1>) se colocan uno al lado del otro en una sola línea horizontal por defecto.*/
+  /*Convierte el contenedor en una caja flexible horizontal.*/
   align-items: center;
-  /*Centra verticalmente los elementos hijos. Si la imagen es más alta que el texto, el texto quedará perfectamente centrado respecto al centro del icono.*/
+  /*Centra verticalmente la imagen del logo y su texto adyacente.*/
   gap: 0.85rem;
-  /*Crea un espacio constante de 13.6px (0.85x16px) entre los elementos internos (entre la imagen y el texto), evitando tener que usar margin-right en la imagen.*/
+  /*Crea una separación de 13.6px entre la imagen y el texto.*/
   justify-self: start;
-  /*Esta propiedad funciona porque este contenedor está ubicado dentro de una columna de grid (tu <nav>). Asegura que el logo se alinee completamente a la izquierda dentro del área de su primera columna en la grilla.*/
+  /*Alinea el contenedor al inicio (izquierda) de su columna dentro del Grid.*/
   margin-left: 2rem;
-  /*Empuja el contenedor 32px (2 x 16px) hacia la derecha desde el borde izquierdo.*/
+  /*Desplaza el contenedor 32px hacia la derecha desde el borde de su columna.*/
 }
 
+/*Este bloque sirve para estructurar el menú principal de enlaces de navegación en línea horizontal.*/
 .menu {
-  /*Este bloque sirve para dar formato al menú principal de navegación (generalmente una lista desordenada <ul> con la clase .menu), alineando horizontalmente todos sus enlaces y centrándolos en la barra.*/
   display: flex;
-  /*Por defecto, los elementos de una lista (<li>) se muestran verticalmente (uno debajo del otro). display: flex los convierte en un contenedor flexible y los coloca en una sola fila horizontal, uno al lado del otro.*/
+  /*Convierte la lista en un contenedor flexible en fila.*/
   list-style: none;
-  /*Elimina los puntos o viñetas negras que los navegadores colocan de forma predeterminada a las listas HTML (<ul> / <li>).*/
+  /*Elimina las viñetas o puntos predeterminados de la lista HTML.*/
   gap: 2.5rem;
-  /*Crea una separación uniforme de 40px (2.5x16px) entre cada ítem del menú (<li>), logrando que las opciones de navegación no queden pegadas entre sí sin necesidad de recurrir a márgenes individuales.*/
+  /*Establece una separación constante de 40px entre cada enlace del menú.*/
   justify-self: center;
+  /*Centra horizontalmente la lista dentro de la columna central del Grid.*/
 }
 
+/*Este bloque sirve para aplicar formato tipográfico al texto del logotipo de la marca.*/
 .logo-text {
-  /*Este bloque sirve para dar estilo al texto del nombre de tu marca o logotipo dentro del contenedor del logo.*/
   color: aliceblue;
-  /*Define el Color*/
+  /*Establece el color del texto en blanco azulado claro.*/
   font-size: 1.5rem;
-  /*Establece el tamaño del texto en 24px (1.5x16px}$ de la base predeterminada del navegador). Es un tamaño adecuado para destacar como el título o marca de la barra.*/
+  /*Define el tamaño de la letra en 24px.*/
   font-family: "Space Grotesk", sans-serif;
-  /*tipografia*/
+  /*Aplica la fuente externa Space Grotesk.*/
   font-weight: 500;
-  /*Aplica un grosor Medio (Medium). Hace que las letras sean un poco más gruesas que el texto normal (400), pero sin llegar a ser una negrita pesada (700), dándole un aspecto moderno e industrial.*/
+  /*Aplica un grosor de letra de nivel medio.*/
 }
 
+/*Este bloque sirve para dar estilo base a todos los enlaces de texto contenidos en la barra de navegación.*/
 nav a {
-  /*Este bloque sirve para dar estilo a todos los enlaces (<a>) que se encuentren dentro de tu barra de navegación <nav>, definiendo su color original, quitando el subrayado por defecto y preparando una animación suave para cuando el usuario pase el cursor.*/
   color: #abb3e0;
-  /*Se le da color al menù*/
+  /*Define un color de texto azul pastel/grisáceo.*/
   text-decoration: none;
-  /*Los navegadores siempre le agregan una línea de subrayado a los enlaces. Esta propiedad la elimina por completo para dar un aspecto más limpio y moderno al menú.*/
+  /*Quita la línea de subrayado predeterminada de los enlaces.*/
   font-size: 1.3rem;
-  /*Define el tamaño de la tipografía en 16.8px (1.05x16px). Es apenas un poco más grande que la letra estándar de lectura ($16\text{px}$), ideal para que los enlaces se lean con claridad.*/
+  /*Establece el tamaño del texto en 20.8px.*/
   transition: color 0.2s ease;
-  /*Le indica al navegador que si la propiedad color cambia (por ejemplo, cuando agregas la regla nav a:hover), el cambio no sea instantáneo, sino una transición fluida que dura 0.2 segundos con un ritmo de aceleración suave (ease).*/
+  /*Configura una animación suave de 0.2 segundos al cambiar el color.*/
   font-family: "Inter", sans-serif;
+  /*Aplica la fuente Inter.*/
 }
 
+/*Este bloque sirve para cambiar el color de los enlaces cuando el usuario pasa el puntero sobre ellos.*/
 nav a:hover {
-  /*Este bloque sirve para cambiar la apariencia de los enlaces de navegación cuando el usuario pasa el cursor (mouse) sobre ellos, creando un efecto interactivo de resaltado.*/
   color: #F5F7FE;
-  /*Se asigna color*/
+  /*Cambia el color del texto a un blanco brillante.*/
 }
 
+/*Este bloque sirve para controlar el tamaño de la imagen del logotipo.*/
 .logo {
-  /*altura logo*/
   height: 2.5rem;
-  /*Definición de la altura del elemento.*/
+  /*Establece la altura fija de la imagen del logo en 40px.*/
 }
 
+/*Este bloque sirve para dar estilo e interactividad al botón de registro de la barra superior.*/
 .btn-registrarse {
-  /*Este bloque de CSS define el aspecto visual y el comportamiento interactivo del botón de registro de tu página web (los elementos HTML con la clase btn-registrarse). Controla su posición dentro de un contenedor Grid, sus colores, tamaño, bordes, tipografía y la animación suave cuando el usuario interactúa con él.*/
-  justify-self: end; 
-  /*Empuja el botón completamente hacia la derecha dentro de su celda en el contenedor Grid.*/
-  background-color: #5b7fff; 
-  /*Color botòn*/
+  justify-self: end;
+  /*Empuja el botón al extremo derecho dentro de su celda Grid.*/
+  background-color: #5b7fff;
+  /*Aplica un color de fondo azul brillante.*/
   color: #ffffff;
-  /*Color texto botòn*/
+  /*Establece el color del texto interno en blanco.*/
   border: none;
-  /*Elimina el borde por defecto que los navegadores le ponen a los botones HTML.*/
+  /*Elimina el borde por defecto del navegador.*/
   padding: 0.9rem 1.4rem;
-  /*Crea espacio entre el texto y los bordes del botón para darle volumen:*/
+  /*Crea un relleno interno de 14.4px arriba/abajo y 22.4px a los lados.*/
   font-size: 1rem;
-  /*Define que el texto dentro del botón mida 1rem (por defecto, equivale a 16px).*/
+  /*Establece el tamaño del texto en 16px.*/
   font-weight: 600;
-  /*Hace que el texto sea semi-negrita (semi-bold) para que destaque más dentro del botón.*/
+  /*Aplica un grosor de texto en semi-negrita.*/
   border-radius: 0.5rem;
-  /*Le da bordes suavizados o redondeados al botón con un radio de 0.5rem (8px).*/
+  /*Redondea las esquinas del botón a 8px.*/
   cursor: pointer;
-  /*Cambia el cursor de una flecha a una mano con el dedo índice levantado (pointer), indicando al usuario que el elemento es interactivo y se puede hacer clic.*/
+  /*Muestra el icono de la mano indicando que es un elemento interactivo.*/
   transition: background-color 0.2s ease;
-  /*Hace que, al cambiar el color de fondo (por ejemplo, si usas :hover cuando el usuario pasa el cursor por encima), el cambio no sea brusco sino una animación fluida que dura 0.2 segundos con una velocidad suave (ease).*/
+  /*Crea una transición fluida al cambiar el color de fondo.*/
   font-family: "Inter", sans-serif;
+  /*Define la fuente tipográfica Inter.*/
 }
 
+/*Este bloque sirve para modificar el fondo del botón de registro cuando se pasa el ratón por encima.*/
 .btn-registrarse:hover {
-  /*Este bloque de CSS define el cambio de aspecto visual del botón de registro cuando el usuario pasa el puntero del ratón sobre él (efecto hover). Sirve para darle retroalimentación visual al usuario y confirmarle que el elemento es interactivo.*/
   background-color: #808bb4;
-  /*Color de fondo*/
+  /*Modifica el fondo a un color azul más opaco.*/
 }
 
 /****************************************************Hasta acá llega el estilo de nav y header************************************/
 /****************************************************responsive nav y header*******************************************************/
-@media (max-width: 48rem) {
-  /*Esta regla abre una Media Query (consulta de medios) en CSS. Sirve para aplicar estilos de diseño adaptativo o responsivo (Responsive Web Design).*/
- 
+
+/*Este bloque sirve para adaptar la barra de navegación en pantallas de laptops y tablets grandes.*/
+@media (max-width: 1024px) {
   nav {
-    /*Este bloque de código CSS aplica un conjunto de estilos a un elemento de navegación HTML (<nav>). Transforma la barra de menú en una estructura vertical fija en la pantalla.*/
-    padding: 0.8rem 1.5rem;
-    /*Establece el espacio interno (relleno) del menú.*/
+    padding: 0 2rem;
+    position: static;
+    z-index: 1000;
+  }
+}
+
+/* Bloque ajustado para navegación fija/estática en celulares */
+@media (max-width: 768px) {
+  nav {
+    position: fixed; /* Mantiene la barra fija en la pantalla al hacer scroll */
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegura que abarque todo el ancho de la pantalla */
+    z-index: 1000; /* Lo posiciona por encima de los demás elementos */
+    background-color: #0E1533; /* Agrega un fondo para que no se transparente el contenido de abajo */
+    
     height: auto;
-    /*Define que la altura de la barra se ajuste automáticamente según la cantidad de contenido que tenga dentro.*/
+    min-height: auto;
+    padding: 1.5rem 1rem;
     display: flex;
-    /*Activa el modelo de caja flexible (Flexbox). Permite organizar y distribuir los elementos hijos (como botones o enlaces) de forma fácil y controlada.*/
     flex-direction: column;
-    /*Cambia la orientación predeterminada de Flexbox (que es en fila/horizontal) para que los elementos se apilen verticalmente (en columna), uno debajo de otro.*/
-    gap: 1rem;
-    /*Crea una separación de 1rem (aprox. 16px) entre cada uno de los elementos hijos dentro del <nav>, sin necesidad de usar márgenes individuales.*/
+    align-items: center;
+    gap: 1.2rem;
   }
 
   .logo-container {
-    /*Este bloque de CSS aplica una regla de alineación a cualquier elemento HTML que tenga la clase logo-container (class="logo-container").*/
-    justify-self: center;
     margin-left: 0;
+    justify-content: center;
+    width: 100%;
   }
 
   .menu {
-    /*Este bloque de CSS define la disposición interna del elemento con la clase .menu. Se asume que el contenedor padre ya tiene aplicado display: flex; previamente o en otra regla.*/
     flex-direction: column;
-    /*Cambia la dirección del contenedor Flexbox para que los elementos hijos (enlaces, botones, ítems de lista) se organicen verticalmente, apilándose uno debajo de otro.*/
     align-items: center;
-    /*Alinea horizontalmente todos los elementos hijos en el centro del eje transversal (en este caso, de izquierda a derecha, ya que la dirección es en columna). Evita que los ítems se estiren al 100% del ancho.*/
     gap: 0.8rem;
+    padding: 0;
   }
 
-  .contenido h1 {
-    /*Este bloque de CSS aplica un tamaño de letra específico al título principal*/
-    font-size: 1.8rem;
+  nav a {
+    font-size: 1.1rem;
   }
 
-  .contenido p {
-    /*Este bloque de CSS establece el tamaño de letra de los párrafos (<p>) situados dentro de un contenedor con la clase .contenido.*/
-    font-size: 1rem;
-  }
-}
-
-/*******************************************************Hasta acá llega el responsive de nav y header********************************************************/
-/*******************************************************Responsive info 1***********************************************************************************/
-/* 1. Pantallas plegables pequeñas y celulares antiguos (hasta 360px) */
-@media (max-width: 360px) {
-  .contenido h1 {
-    font-size: 1.6rem;
-  }
-
-  .contenido p {
-    font-size: 0.9rem;
-  }
-
-  .btn-primary {
-    font-size: 0.95rem;
-    padding: 0.75rem 1rem;
-  }
-}
-
-/* 2. Celulares estándar (iPhone, Samsung Galaxy, etc. - hasta 480px) */
-@media (max-width: 480px) {
-  .info_1 {
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem 1rem;
-    height: auto;
-    min-height: auto;
-  }
-
-  .contenido {
-    margin-left: 0;
-    max-width: 100%;
-    align-items: center;
-    text-align: center;
-  }
-
-  .contenido h1 {
-    font-size: 2rem;
-  }
-
-  .contenido p {
-    font-size: 1rem;
-  }
-
-  .reservar {
-    flex-direction: column;
+  .btn-registrarse {
+    justify-self: center;
     width: 100%;
-    gap: 1rem;
-  }
-
-  .btn-primary,
-  .btn-secundario {
-    width: 100%;
+    max-width: 15rem;
     text-align: center;
   }
 }
-
-/* 3. Celulares grandes, Phablets y Pro Max (hasta 600px) */
-@media (max-width: 600px) {
-  .contenido h1 {
-    font-size: 2.3rem;
-  }
-}
-
-/* 4. Tablets pequeñas o celulares en modo horizontal (hasta 768px) */
-@media (max-width: 768px) {
-  .info_1 {
-    flex-direction: column;
-    padding: 2.5rem 1.5rem;
-    height: auto;
-  }
-
-  .contenido {
-    margin-left: 0;
-    max-width: 100%;
-  }
-}
-
 /*******************************************************Fin responsive info 1*******************************************************************************/
 /******************************************************Inicia el estilo de la info1**************************************************************************/
+
+/*Este bloque sirve para estructurar la primera sección principal (Hero Section) con alineación horizontal.*/
 .info_1 {
-  background-color: #F5F7FE ;
+  background-color: #F5F7FE;
+  /*Aplica un fondo claro de tono azulado.*/
   background-position: center center;
+  /*Centra la imagen de fondo si se utiliza.*/
   background-repeat: no-repeat;
+  /*Evita la repetición en mosaico de la imagen de fondo.*/
   background-size: cover;
+  /*Escala la imagen para cubrir toda la superficie de la sección.*/
   background-attachment: scroll;
-
+  /*Mantiene el desplazamiento estándar de la imagen de fondo con el scroll.*/
   width: 100%;
+  /*Abarca todo el ancho de la pantalla.*/
   min-height: 100vh;
-
+  /*Asegura que la sección mida mínimo el 100% de la altura de la ventana.*/
   margin-top: 4.375rem;
-
+  /*Agrega margen superior para compensar la barra de navegación fija.*/
   display: flex;
+  /*Activa el diseño flexible en fila.*/
   align-items: center;
+  /*Centra los elementos (texto y tarjeta) verticalmente.*/
   justify-content: space-between;
+  /*Distribuye el texto a la izquierda y la tarjeta a la derecha.*/
 }
 
+/*Este bloque sirve para delimitar y formatear la columna de textos de la sección principal.*/
 .contenido {
   max-width: 32rem;
+  /*Limita el ancho del contenedor a 512px para lectura cómoda.*/
   display: flex;
+  /*Convierte la columna en un contenedor flexible vertical.*/
   flex-direction: column;
+  /*Apila título, párrafos y botones verticalmente.*/
   gap: 1.5rem;
+  /*Establece una distancia de 24px entre elementos.*/
   margin-left: 18rem;
+  /*Desplaza el bloque de texto 288px desde el borde izquierdo.*/
 }
 
+/*Este bloque sirve para dar estilo al título principal H1 de la página.*/
 .contenido h1 {
   color: #4C5480;
+  /*Aplica un tono azul plomo al título.*/
   font-family: "Space Grotesk", sans-serif;
+  /*Aplica la tipografía Space Grotesk.*/
   font-size: 3.8rem;
+  /*Define el tamaño de texto en 60.8px.*/
   font-weight: 700;
+  /*Aplica un grosor en negrita.*/
   line-height: 1.1;
+  /*Reduce la distancia interlineal entre renglones.*/
 }
 
+/*Este bloque sirve para dar formato al párrafo descriptivo debajo del título principal.*/
 .contenido p {
   color: #4C5480;
+  /*Aplica el color azul plomo.*/
   font-family: "Inter", sans-serif;
+  /*Aplica la tipografía Inter.*/
   font-size: 1.15rem;
+  /*Establece el tamaño del texto en 18.4px.*/
   line-height: 1.6;
+  /*Define un interlineado amplio para facilitar la lectura.*/
 }
 
+/*Este bloque sirve para agrupar y alinear horizontalmente los botones de llamado a la acción.*/
 .reservar {
   display: flex;
+  /*Coloca los botones uno al lado del otro.*/
   align-items: center;
+  /*Centra verticalmente los botones.*/
   gap: 1.5rem;
+  /*Separa los botones por 24px de distancia.*/
   margin-top: 0.5rem;
+  /*Añade espacio superior respecto al párrafo.*/
 }
 
+/*Este bloque sirve para diseñar el botón de acción principal de la sección.*/
 .btn-primary {
   background-color: #5b7fff;
+  /*Aplica color de fondo azul.*/
   color: #FFFFFF;
+  /*Aplica texto en color blanco.*/
   border: none;
+  /*Elimina bordes por defecto.*/
   padding: 0.9rem 1.6rem;
+  /*Establece el relleno interno superior/inferior y lateral.*/
   font-size: 1.05rem;
+  /*Establece el tamaño del texto en 16.8px.*/
   font-weight: 600;
+  /*Aplica grosor semi-negrita.*/
   border-radius: 0.5rem;
+  /*Redondea las esquinas a 8px.*/
   cursor: pointer;
+  /*Muestra el puntero de mano interactivo.*/
   transition: background-color 0.2s ease;
+  /*Agrega transición suave al cambiar el fondo.*/
 }
 
+/*Este bloque sirve para cambiar el color del botón principal durante la interacción hover.*/
 .btn-primary:hover {
   background-color: #4365e2;
+  /*Cambia a un tono de azul más oscuro.*/
 }
 
+/*Este bloque sirve para dar estilo al botón o enlace de acción secundario.*/
 .btn-secundario {
   color: #FFFFFF;
+  /*Define el color del texto en blanco.*/
   text-decoration: none;
+  /*Quita el subrayado.*/
   font-size: 1.05rem;
+  /*Establece el tamaño del texto en 16.8px.*/
   font-weight: 500;
+  /*Establece un grosor medio.*/
   transition: opacity 0.2s ease;
+  /*Configura una animación suave de transparencia.*/
 }
 
+/*Este bloque sirve para aplicar opacidad al botón secundario al pasar el ratón.*/
 .btn-secundario:hover {
   opacity: 0.8;
+  /*Reduce la opacidad al 80% para retroalimentación visual.*/
 }
 
 /**************************************************************Finaliza infor 1*******************************************************************************/
 /*************************************************************tarjeta1****************************************************************************************/
+
+/*Este bloque sirve para diseñar la tarjeta visual de gastos con estilo de modo oscuro.*/
 .card-1 {
   background-color: #131B3E;
+  /*Define un fondo azul marino muy oscuro.*/
   border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  /*Añade un borde blanco sutil de 1px semitransparente.*/
   border-radius: 1.25rem;
+  /*Redondea las esquinas de la tarjeta a 20px.*/
   padding: 2rem;
+  /*Aplica un espacio interno de 32px.*/
   width: 26rem;
+  /*Fija el ancho de la tarjeta en 416px.*/
   display: flex;
+  /*Activa el contenedor flexible.*/
   flex-direction: column;
+  /*Apila los componentes internos de arriba a abajo.*/
   gap: 1.5rem;
+  /*Establece un espacio de 24px entre elementos.*/
   box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.4);
+  /*Aplica una sombra difuminada profunda.*/
   margin-right: 13rem;
+  /*Desplaza la tarjeta 208px hacia la izquierda desde la derecha.*/
 }
 
+/*Este bloque sirve para alinear el subtítulo y la insignia dentro de la cabecera de la tarjeta.*/
 .card-header {
   display: flex;
+  /*Organiza los elementos horizontalmente.*/
   justify-content: space-between;
+  /*Envía el subtítulo a la izquierda y la insignia a la derecha.*/
   align-items: center;
+  /*Centra verticalmente ambos elementos.*/
 }
 
+/*Este bloque sirve para dar estilo al texto del subtítulo de la tarjeta.*/
 .card-subtitle {
   color: #64748B;
+  /*Aplica un color de texto gris azulado.*/
   font-size: 0.9rem;
+  /*Establece el tamaño del texto en 14.4px.*/
 }
 
+/*Este bloque sirve para diseñar una insignia o estado de color verde dentro de la tarjeta.*/
 .badge-status {
   background-color: rgba(16, 185, 129, 0.15);
+  /*Aplica un fondo verde claro transparente.*/
   color: #10B981;
+  /*Define el texto en color verde esmeralda.*/
   font-size: 0.8rem;
+  /*Establece el tamaño de letra en 12.8px.*/
   padding: 0.25rem 0.6rem;
+  /*Aplica relleno interno de 4px arriba/abajo y 9.6px a los lados.*/
   border-radius: 1rem;
+  /*Redondea completamente los bordes tipo pastilla.*/
   font-weight: 600;
+  /*Aplica grosor semi-negrita.*/
 }
 
+/*Este bloque sirve para contener y ordenar las etiquetas de valor monetario.*/
 .card-amount {
   display: flex;
+  /*Activa el contenedor flexible.*/
   flex-direction: column;
+  /*Apila la etiqueta y el monto.*/
   gap: 0.3rem;
+  /*Añade una distancia de 4.8px entre ambos.*/
 }
 
+/*Este bloque sirve para dar estilo a la etiqueta pequeña de monto.*/
 .amount-label {
   color: #64748B;
+  /*Aplica un tono de texto gris azulado.*/
   font-size: 0.9rem;
+  /*Define el tamaño en 14.4px.*/
 }
 
+/*Este bloque sirve para formatear la cifra numérica del dinero acumulado.*/
 .amount-val {
   color: #FFFFFF;
+  /*Define el texto en blanco.*/
   font-family: "Space Grotesk", sans-serif;
+  /*Aplica la tipografía Space Grotesk.*/
   font-size: 2.5rem;
+  /*Establece un tamaño grande de 40px para la cifra.*/
   font-weight: 700;
+  /*Aplica grosor en negrita.*/
 }
 
+/*Este bloque sirve para estructurar el contenedor del gráfico de barras.*/
 .chart-bars {
   display: flex;
+  /*Coloca las barras una al lado de otra.*/
   align-items: flex-end;
+  /*Alinea las barras en la base inferior.*/
   justify-content: space-between;
+  /*Distribuye equitativamente el espacio entre las barras.*/
   height: 4.5rem;
+  /*Establece una altura total del área de gráfico de 72px.*/
   padding: 0.5rem 0;
+  /*Agrega relleno superior e inferior.*/
   gap: 8px;
+  /*Establece un espacio constante de 8px entre barras.*/
 }
 
+/*Este bloque sirve para definir las propiedades base de cada barra individual del gráfico.*/
 .bar {
   width: 1.6rem;
+  /*Aplica un ancho fijo de 25.6px por barra.*/
   background-color: #1E295D;
+  /*Aplica un color azul oscuro inactivo.*/
   border-radius: 0.25rem 0.25rem 0 0;
+  /*Redondea únicamente las esquinas superiores.*/
   transition: height 0.3s ease, background-color 0.3s ease;
+  /*Añade animación al cambiar la altura o el color.*/
 }
 
+/*Este bloque sirve para resaltar la barra activa o seleccionada.*/
 .bar.active {
   background-color: #5b7fff;
+  /*Cambia el color de fondo a un azul brillante.*/
 }
 
-.bar-25 { height: 25%; }
-.bar-30 { height: 30%; }
-.bar-40 { height: 40%; }
-.bar-50 { height: 50%; }
-.bar-60 { height: 60%; }
-.bar-80 { height: 80%; }
-.bar-90 { height: 90%; }
+/*Estos bloques sirven para definir las alturas porcentuales de cada barra del gráfico.*/
+.bar-25 { height: 25%; /*Establece la altura al 25%.*/ }
+.bar-30 { height: 30%; /*Establece la altura al 30%.*/ }
+.bar-40 { height: 40%; /*Establece la altura al 40%.*/ }
+.bar-50 { height: 50%; /*Establece la altura al 50%.*/ }
+.bar-60 { height: 60%; /*Establece la altura al 60%.*/ }
+.bar-80 { height: 80%; /*Establece la altura al 80%.*/ }
+.bar-90 { height: 90%; /*Establece la altura al 90%.*/ }
 
+/*Este bloque sirve para estructurar la lista desordenada de desglose de gastos.*/
 .gastos-list {
   list-style: none;
+  /*Quita las viñetas por defecto.*/
   display: flex;
+  /*Flexbox.*/
   flex-direction: column;
+  /*Apila los ítems de gasto uno debajo del otro.*/
   gap: 0.8rem;
+  /*Crea una distancia de 12.8px entre ítems.*/
 }
 
+/*Este bloque sirve para estructurar cada elemento o fila de la lista de gastos.*/
 .gastos-list li {
   display: flex;
+  /*Alinea ícono, texto y cifra en una fila horizontal.*/
   align-items: center;
+  /*Centra verticalmente los elementos.*/
   color: #E2E8F0;
+  /*Define un color de texto gris claro.*/
   font-size: 0.95rem;
+  /*Establece el tamaño del texto en 15.2px.*/
 }
 
+/*Este bloque sirve para crear un punto de color circular decorativo por categoría.*/
 .dot {
   width: 0.5rem;
+  /*Ancho de 8px.*/
   height: 0.5rem;
+  /*Alto de 8px.*/
   border-radius: 50%;
+  /*Convierte la caja en un círculo perfecto.*/
   margin-right: 0.75rem;
+  /*Agrega un espacio de 12px a la derecha.*/
 }
 
-.dot-blue { background-color: #5b7fff; }
-.dot-green { background-color: #10B981; }
-.dot-purple { background-color: #8B5CF6; }
+/*Estos bloques sirven para asignar los diferentes colores a los puntos de categoría.*/
+.dot-blue { background-color: #5b7fff; /*Punto de color azul.*/ }
+.dot-green { background-color: #10B981; /*Punto de color verde.*/ }
+.dot-purple { background-color: #8B5CF6; /*Punto de color morado.*/ }
 
+/*Este bloque sirve para expandir el texto del nombre del gasto empujando el monto al final.*/
 .gasto-nombre {
   flex-grow: 1;
+  /*Hace que el contenedor tome todo el espacio horizontal sobrante.*/
 }
 
+/*Este bloque sirve para dar estilo a la cifra monetaria en la lista.*/
 .gasto-monto {
   font-weight: 600;
+  /*Aplica grosor semi-negrita.*/
   font-family: "Space Grotesk", sans-serif;
+  /*Aplica la fuente de números Space Grotesk.*/
 }
 
+/*Este bloque sirve para dar estilo a una caja de alerta o advertencia dentro de la tarjeta.*/
 .alerta-gasto {
   background-color: rgba(239, 68, 68, 0.1);
+  /*Aplica un fondo rojo traslúcido.*/
   border-radius: 0.5rem;
+  /*Redondea los bordes a 8px.*/
   padding: 0.85rem;
+  /*Aplica relleno interno de 13.6px.*/
 }
 
+/*Este bloque sirve para formatear el texto de advertencia de la alerta.*/
 .alerta-gasto p {
   color: #F87171;
+  /*Aplica color de texto rojo.*/
   font-size: 0.85rem;
+  /*Establece el tamaño en 13.6px.*/
   line-height: 1.4;
+  /*Establece una altura interlineal adecuada.*/
 }
 
+/*Este bloque sirve para crear una línea horizontal divisoria entre secciones.*/
 .barra {
   background-color: #0E1533;
+  /*Aplica un color azul muy oscuro.*/
   width: 100%;
+  /*Abarca todo el ancho disponible.*/
   height: 0.09rem;
+  /*Establece un grosor delgado.*/
   margin-top: -2.4rem;
+  /*Aplica margen negativo para ajustar la posición sobre el elemento adyacente.*/
 }
 
 /************************************************************************Finaliza tarjeta1**************************************************************************/
-/*********************************************************************** responsive  info 1 tarjeta****************************************************************/
-/* Pantallas grandes y portátiles (Reducción de márgenes excesivos)*/
+/*********************************************************************** responsive info 1 tarjeta****************************************************************/
+
+/*Este bloque sirve para adaptar la sección 1 en pantallas de laptops reduciendo los márgenes excesivos.*/
 @media (max-width: 1400px) {
   .contenido {
     margin-left: 5rem;
+    /*Reduce el margen izquierdo a 80px.*/
   }
 
   .card-1 {
     margin-right: 5rem;
+    /*Reduce el margen derecho a 80px.*/
   }
 }
 
-/* Tablets en modo Horizontal y Desktop Pequeño */
+/*Este bloque sirve para ajustar la sección 1 en tablets horizontales y laptops pequeñas.*/
 @media (max-width: 1024px) {
   .info_1 {
     padding: 4rem 2rem;
+    /*Sustituye grandes márgenes con padding seguro.*/
     gap: 2rem;
+    /*Establece separación entre texto y tarjeta.*/
   }
 
   .contenido {
     margin-left: 0;
+    /*Elimina el margen izquierdo fijo.*/
   }
 
   .card-1 {
     margin-right: 0;
+    /*Elimina el margen derecho fijo.*/
   }
 
   .contenido h1 {
     font-size: 3rem;
+    /*Reduce el tamaño del título a 48px.*/
   }
 }
 
-/* Tablets en Vertical y Dispositivos Móviles (Alineación en columna) */
+/*Este bloque sirve para apilar el contenido y la tarjeta verticalmente en dispositivos móviles.*/
 @media (max-width: 768px) {
   .info_1 {
     flex-direction: column;
+    /*Apila los bloques de texto y tarjeta verticalmente.*/
     justify-content: center;
+    /*Centra verticalmente.*/
     padding: 3rem 1.5rem;
+    /*Reduce el padding periférico.*/
     height: auto;
+    /*Permite crecimiento automático de altura.*/
   }
 
   .contenido {
     margin-left: 0;
     max-width: 100%;
+    /*Cubre todo el ancho.*/
     align-items: center;
+    /*Centra los ítems.*/
     text-align: center;
+    /*Centra todo el texto.*/
   }
 
   .contenido h1 {
     font-size: 2.5rem;
+    /*Ajusta el tamaño del título a 40px.*/
   }
 
   .reservar {
     justify-content: center;
+    /*Centra los botones.*/
     width: 100%;
   }
 
   .card-1 {
     margin-right: 0;
     width: 100%;
+    /*Adapta la tarjeta al ancho de la pantalla.*/
     max-width: 26rem;
+    /*Limita el ancho máximo a 416px.*/
     box-sizing: border-box;
+    /*Previene desbordamiento.*/
   }
 }
 
-/* Móviles Pequeños */
+/*Este bloque sirve para ajustar textos y botones en celulares pequeños.*/
 @media (max-width: 480px) {
   .contenido h1 {
     font-size: 2rem;
+    /*Ajusta el título a 32px.*/
   }
 
   .contenido p {
     font-size: 1rem;
+    /*Ajusta el párrafo a 16px.*/
   }
 
   .reservar {
     flex-direction: column;
+    /*Apila los botones de acción.*/
     gap: 1rem;
   }
 
   .btn-primary,
   .btn-secundario {
     width: 100%;
+    /*Hace que los botones ocupen el 100% del ancho.*/
     text-align: center;
+    /*Centra el texto dentro del botón.*/
   }
 
   .card-1 {
     padding: 1.25rem;
+    /*Reduce el padding interno de la tarjeta.*/
   }
 
   .amount-val {
     font-size: 2rem;
+    /*Reduce la cifra principal a 32px.*/
   }
 
   .barra {
     background-color: #ffffff;
+    /*Cambia la barra a color blanco.*/
     width: 100%;
     height: 0.06rem;
     margin-top: -2.4rem;
     opacity: 0.9;
+    /*Sube la opacidad al 90%.*/
   }
 }
 
 /***************************************************************************************Fin responsive info1 tarjeta 1*******************************************/
 /*****************************************************************************estilos infor y tarjeta 2*******************************************************************/
 
+/*Este bloque sirve para estructurar la segunda sección informativa con un diseño en fila.*/
 .info_2 {
   background-color: #F5F7FE;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: scroll;
-
+  /*Define fondo claro.*/
   width: 100%;
+  /*Ocupa todo el ancho.*/
   min-height: 100vh;
-
+  /*Ocupa al menos toda la ventana.*/
   margin-top: 0rem;
-
   display: flex;
+  /*Flexbox.*/
   align-items: center;
+  /*Centra el contenido verticalmente.*/
   justify-content: space-between;
+  /*Distribuye el contenido en los extremos.*/
   box-sizing: border-box;
 }
 
+/*Este bloque sirve para delimitar el contenedor del texto secundario.*/
 .contenido1 {
   max-width: 32rem;
+  /*Ancho máximo de 512px.*/
   display: flex;
   flex-direction: column;
+  /*Apila los párrafos verticalmente.*/
   gap: 1.5rem;
+  /*Espacio de 24px entre textos.*/
   margin-left: 18rem;
+  /*Desplaza el texto 288px a la derecha.*/
 }
 
+/*Este bloque sirve para dar estilo al título H2 de la segunda sección.*/
 .contenido1 h2 {
   color: #4C5480;
+  /*Color azul plomo.*/
   font-family: "Space Grotesk", sans-serif;
+  /*Aplica la fuente Space Grotesk.*/
   font-size: 2.8rem;
+  /*Tamaño de letra de 44.8px.*/
   font-weight: 700;
+  /*Negrita.*/
   line-height: 1.1;
+  /*Interlineado compacto.*/
+  margin-top: -6rem;
+  /*Desplaza el título hacia arriba con un margen negativo.*/
 }
 
+/*Este bloque sirve para dar formato al párrafo de la sección 2.*/
 .contenido1 p {
   color: #4C5480;
   font-family: "Inter", sans-serif;
@@ -616,33 +733,49 @@ nav a:hover {
   line-height: 1.6;
 }
 
+/*Este bloque sirve para dar las dimensiones y ubicación a la tarjeta del gráfico 2.*/
 .card2 {
   margin-right: 10rem;
+  /*Desplaza la tarjeta 160px desde la derecha.*/
   width: 100%;
+  /*Ocupa el ancho disponible hasta el máximo dado.*/
   max-width: 500px;
+  /*Limita el ancho a 500px.*/
 }
 
+/*Este bloque sirve para contener el marco y la leyenda del gráfico.*/
 .chart-card {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  /*Espacio de 16px.*/
 }
 
+/*Este bloque sirve para estructurar el panel oscuro contenedor del gráfico.*/
 .card-container {
   background-color: #121831;
+  /*Fondo azul marino oscuro.*/
   border: 1px solid #1e284a;
+  /*Borde delgado azul metálico.*/
   border-radius: 16px;
+  /*Redondea los bordes a 16px.*/
   padding: 32px 24px;
+  /*Relleno interno de 32px vertical y 24px horizontal.*/
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  /*Sombra flotante.*/
 }
 
+/*Este bloque sirve para definir el área relativa donde se dibujará la gráfica.*/
 .chart-area {
   position: relative;
+  /*Permite posicionar elementos absolutos dentro de ella.*/
   height: 140px;
+  /*Fija la altura del gráfico en 140px.*/
   width: 100%;
 }
 
+/*Este bloque sirve para contener la curva trazada sobre la gráfica.*/
 .curve-line {
   position: absolute;
   top: 0;
@@ -650,54 +783,71 @@ nav a:hover {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  /*Evita interferencias con eventos del ratón.*/
 }
 
+/*Este bloque sirve para contener el conjunto de puntos sobre el gráfico.*/
 .dots-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 6.25rem;
+  /*Altura fija de 100px.*/
 }
 
+/*Este bloque sirve para dar estilo base a los puntos sobre el gráfico estadístico.*/
 .dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #638eff;
+  /*Posicionamiento absoluto.*/
+  width: 0.5rem;
+  /*Ancho de 8px.*/
+  height: 0.5rem;
+  /*Alto de 8px.*/
+  background-color: #333;
+  /*Fondo oscuro.*/
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(99, 142, 255, 0.4);
+  /*Forma circular.*/
 }
 
+/*Este bloque sirve para diseñar el cuadro destacado con la cifra total flotante.*/
 .total-badge {
   position: absolute;
   top: 20px;
   right: 10px;
   background-color: rgba(18, 24, 49, 0.85);
+  /*Fondo oscuro semitransparente.*/
   border: 1px solid #38518e;
+  /*Borde delgado azul.*/
   border-radius: 10px;
+  /*Redondea bordes a 10px.*/
   padding: 8px 16px;
+  /*Relleno interno.*/
   display: flex;
   flex-direction: column;
   align-items: center;
   backdrop-filter: blur(4px);
+  /*Efecto de desenfoque de fondo.*/
 }
 
+/*Este bloque sirve para el texto pequeño dentro del cuadro flotante del total.*/
 .total-label {
   font-size: 0.65rem;
   font-weight: 600;
   color: #7991c4;
   letter-spacing: 1.5px;
+  /*Separación amplia entre letras.*/
   margin-bottom: 2px;
 }
 
+/*Este bloque sirve para el texto del monto numérico dentro del cuadro del total.*/
 .total-amount {
   font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
   font-family: 'Courier New', Courier, monospace;
+  /*Fuente monoespaciada.*/
 }
 
+/*Este bloque sirve para crear la línea base horizontal inferior del gráfico.*/
 .base-line {
   position: absolute;
   bottom: 0;
@@ -707,6 +857,7 @@ nav a:hover {
   background-color: #1e2a4a;
 }
 
+/*Este bloque sirve para la leyenda aclaratoria al pie del gráfico.*/
 .chart-legend {
   color: #4C5480;
   font-family: "Inter", sans-serif;
@@ -714,77 +865,19 @@ nav a:hover {
   margin: 0;
   line-height: 1.4;
   padding-left: 4px;
- 
 }
 
+/*Estos bloques sirven para posicionar individualmente cada punto de datos en la curva del gráfico.*/
+.dot-1 { margin-top: 6.1rem; background-color: #7991c4; left: 5%; }
+.dot-2 { margin-top: 7rem; background-color: #7991c4; left: 15%; }
+.dot-3 { margin-top: 6.1rem; background-color: #7991c4; left: 25%; }
+.dot-4 { margin-top: 7rem; background-color: #7991c4; left: 33%; }
+.dot-5 { margin-top: 6rem; background-color: #7991c4; left: 40%; }
+.dot-6 { margin-top: 5rem; background-color: #7991c4; left: 50%; }
+.dot-7 { margin-top: 6rem; background-color: #7991c4; left: 59%; }
+.dot-8 { margin-top: 5rem; background-color: #7991c4; left: 66%; }
 
-.dots-container {
-  position: relative;
-  width: 100%;
-  height: 6.25rem; 
-}
-
-
-.dot {
-  position: absolute;
-  width: 0.5rem;
-  height: 0.5rem; 
-  background-color: #333;
-  border-radius: 50%;
-}
-
-
-.dot-1 {
-  margin-top: 6.1rem;
-  background-color: #7991c4;
-  left: 5%;
-}
-
-.dot-2 {
-  margin-top: 7rem;
-  background-color: #7991c4;
-  left: 15%;
-}
-
-.dot-3 {
-  margin-top: 6.1rem;
-  background-color: #7991c4;
-  left: 25%;
-  
-}
-
-.dot-4 {
-  margin-top: 7rem;
-  background-color: #7991c4;
-  left: 33%;
-}
-
-.dot-5 {
- margin-top: 6rem;
-  background-color: #7991c4;
-  left: 40%;
-}
-
-.dot-6 {
-  margin-top: 5rem;
-  background-color: #7991c4;
-  left: 50%;
-}
-
-.dot-7 {
-margin-top: 6rem;
-  background-color: #7991c4;
-  left: 59%;
-}
-
-.dot-8 {
- margin-top: 5rem;
-  background-color: #7991c4;
-  left: 66%;
-}
-
-
-
+/*Este bloque sirve para crear la línea divisoria inferior de la sección 2.*/
 .barra2 {
   background-color: #0E1533;
   width: 100%;
@@ -796,7 +889,7 @@ margin-top: 6rem;
 /**********************************************************************************Finde estilo de info 2 y tarjeta 2*******************************************************************************/
 /*******************************************************************************Inicia el responsive de info 2 y tarjeta 2**************************************************************************/
 
-/* Ajuste general para contenedores en pantallas grandes/laptops */
+/*Este bloque sirve para reajustar los márgenes de la sección 2 en pantallas medianas.*/
 @media (max-width: 1400px) {
   .contenido1 {
     margin-left: 5rem;
@@ -807,7 +900,7 @@ margin-top: 6rem;
   }
 }
 
-/* Tablets (1024px o menos) */
+/*Este bloque sirve para adaptar la sección 2 en tablets horizontales.*/
 @media (max-width: 1024px) {
   .info_2 {
     padding: 4rem 2rem;
@@ -821,6 +914,8 @@ margin-top: 6rem;
 
   .contenido1 h2 {
     font-size: 2.2rem;
+    margin-top: 0;
+    /*Elimina el margen negativo para evitar choques.*/
   }
 
   .card2 {
@@ -829,7 +924,7 @@ margin-top: 6rem;
   }
 }
 
-/* Celulares y Tablets verticales (768px o menos) */
+/*Este bloque sirve para organizar la sección 2 en una sola columna para dispositivos móviles.*/
 @media (max-width: 768px) {
   .info_2 {
     flex-direction: column;
@@ -847,7 +942,8 @@ margin-top: 6rem;
   }
 
   .contenido1 h2 {
-    font-size: 2rem; /* Tamaño de texto más cómodo para celular */
+    font-size: 2rem;
+    margin-top: 0;
   }
 
   .card2 {
@@ -864,7 +960,7 @@ margin-top: 6rem;
   }
 }
 
-/* Celulares pequeños (hasta 480px) */
+/*Este bloque sirve para ajustar los textos del panel en celulares pequeños.*/
 @media (max-width: 480px) {
   .contenido1 h2 {
     font-size: 1.75rem;
@@ -886,152 +982,885 @@ margin-top: 6rem;
     font-size: 0.95rem;
   }
 }
+
 /*******************************************************************************Fin responsive de info2 y tarjeta 2*********************************************************************************/
 /******************************************************************************Inicia estilo info3 y tarjeta3**************************************************************************************/
+
+/*Este bloque sirve para definir la estructura de la tercera sección (Pasos/Proceso).*/
 .info_3 {
   background-color: #F5F7FE;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: scroll;
-
   width: 100%;
-  min-height: 100vh;
-
-  margin-top: 0rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  height: 100vh;
+  margin-top: -3rem;
+  display: block;
+  padding-top: 3rem;
 }
 
+/*Este bloque sirve para agrupar y posicionar los títulos principales del proceso.*/
 .contenido2 {
-  max-width: 42rem;
+  max-width: 70rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-left: 18rem;
-  margin-top: 8rem;
+  
 }
 
-
- .contenido2 h2 {
+/*Este bloque sirve para formatear el título H2 de la tercera sección.*/
+.contenido2 h2 {
   color: #4C5480;
   font-family: "Space Grotesk", sans-serif;
   font-size: 2.8rem;
   font-weight: 700;
   line-height: 1.1;
+  max-width: 35rem;
+  margin-top: 3rem;
 }
 
-
+/*Este bloque sirve para formatear el párrafo explicativo de la sección de etapas.*/
 .contenido2 p {
-   color: #4C5480;
+  color: #4C5480;
   font-family: "Inter", sans-serif;
   font-size: 1.15rem;
   line-height: 1.6;
+  margin-top: 1rem;
+  max-width: 28rem;
 }
 
-
-
-
-
-.lineas{
+/*Este bloque sirve para definir el contenedor de la línea de tiempo/progreso.*/
+.lineas {
   display: flex;
   gap: 1.5rem;
   width: 60%;
   box-sizing: border-box;
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-left: 18rem;
 }
 
+/*Este bloque sirve para dar estructura vertical a cada indicador numérico del proceso.*/
 .step-item {
   flex: 1;
+  /*Hace que los pasos se dividan equitativamente.*/
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-
+/*Este bloque sirve para crear la línea azul decorativa de cada etapa.*/
 .step-line {
   width: 100%;
-  height: 0.125rem; 
+  height: 0.125rem;
   background-color: #4f75ff;
 }
 
-
+/*Este bloque sirve para dar estilo al texto del número de cada etapa.*/
 .step-number {
   color: #4f75ff;
   font-size: 1rem;
   font-weight: 600;
 }
 
+/*Estos bloques sirven para ubicar en columnas manuales el subtítulo y texto del Paso 1.*/
 .sub1 {
-color: #4C5480;
+  color: #4C5480;
   font-family: "Inter", sans-serif;
   font-size: 1.15rem;
+  font-weight: bold;
   line-height: 1.6;
-  margin-top: 4rem;
+  margin-top: 3em;
   margin-left: 18rem;
-
 }
 
 .text1 {
- color: #4C5480;
+  display: inline-block;
+  color: #4C5480;
   font-family: "Inter", sans-serif;
-  font-size: 1.15rem;
+  font-size: 1rem;
   line-height: 1.6;
-   max-width: 20rem;
-   margin-left: 18rem;
-   margin-top: 1rem;
+  max-width: 20rem;
+  margin-left: 18rem;
+  margin-top: 0.5rem;
 }
 
+/*Estos bloques sirven para ubicar en columnas manuales el subtítulo y texto del Paso 2.*/
 .sub2 {
-color: #4C5480;
+  color: #4C5480;
   font-family: "Inter", sans-serif;
   font-size: 1.15rem;
+  font-weight: bold;
   line-height: 1.6;
-  margin-top: -8.7rem;
-  margin-left: 34.5em;
-
+  margin-top: -7rem;
+  margin-left: 39.5rem;
 }
 
 .text2 {
- color: #4C5480;
+  display: inline-block;
+  color: #4C5480;
   font-family: "Inter", sans-serif;
-  font-size: 1.15rem;
+  font-size: 1rem;
   line-height: 1.6;
-   max-width: 20rem;
-   margin-left: 39.9rem;
-   margin-top: 1.2rem;
+  max-width: 18rem;
+  margin-left: 39.5rem;
+  margin-top: 0.4rem;
 }
 
+/*Estos bloques sirven para ubicar en columnas manuales el subtítulo y texto del Paso 3.*/
 .sub3 {
-color: #4C5480;
+  color: #4C5480;
   font-family: "Inter", sans-serif;
   font-size: 1.15rem;
+  font-weight: bold;
   line-height: 1.6;
-  margin-top: -8.7rem;
-  margin-left: 53em;
-
+  margin-top: -7rem;
+  margin-left: 61rem;
 }
 
 .text3 {
- color: #4C5480;
+  color: #4C5480;
   font-family: "Inter", sans-serif;
-  font-size: 1.15rem;
+  font-size: 1rem;
   line-height: 1.6;
-   max-width: 20rem;
-   margin-left: 61rem;
-   margin-top: 1.2rem;
+  max-width: 18rem;
+  margin-left: 61.1rem;
+  margin-top: 0.5rem;
 }
 
-
+/*Este bloque sirve para crear la línea divisoria inferior de la sección 3.*/
 .barra3 {
   background-color: #0E1533;
   width: 100%;
   height: 0.09rem;
-  margin-top: 5rem;
+  opacity: 0.5;
+  margin-top: -8rem;
 }
 
 /******************************************************************************Fin estilo info3 y tarjeta3*****************************************************************************************/
+/*****************************************************************************responsive info 3 y tarjeta 3****************************************************************************************/
+
+/*Este bloque sirve para ajustar la posición de las columnas del proceso en laptops.*/
+@media (max-width: 1400px) {
+  .contenido2,
+  .lineas,
+  .sub1,
+  .text1 {
+    margin-left: 5rem;
+  }
+  .sub2,
+  .text2 {
+    margin-left: 25rem;
+  }
+  .sub3,
+  .text3 {
+    margin-left: 45rem;
+  }
+}
+
+/*Este bloque sirve para ajustar las columnas del proceso en pantallas pequeñas.*/
+@media (max-width: 1024px) {
+  .contenido2,
+  .lineas,
+  .sub1,
+  .text1 {
+    margin-left: 2rem;
+  }
+  .sub2,
+  .text2 {
+    margin-left: 18rem;
+  }
+  .sub3,
+  .text3 {
+    margin-left: 34rem;
+  }
+}
+
+/*Este bloque sirve para transformar las columnas del proceso en una lista apilada para móviles.*/
+@media (max-width: 768px) {
+  .info_3 {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .contenido2 {
+    margin-left: 0;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .contenido2 h2,
+  .contenido2 p {
+    max-width: 100%;
+  }
+
+  .contenido2 h2 {
+    font-size: 2rem;
+  }
+
+  .lineas {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+
+  .sub1,
+  .sub2,
+  .sub3 {
+    margin-left: 0;
+    margin-top: 1.5rem;
+  }
+
+  .text1,
+  .text2,
+  .text3 {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.5rem;
+    max-width: 100%;
+  }
+
+  .barra3 {
+    margin-top: 2.5rem;
+  }
+}
+
+/*****************************************************************************fin responsive info 3 y tarjeta 3***********************************************************************************/
+/****************************************************************************Inicio estilo info 4 y tarjeta 4*************************************************************************************/
+
+/*Este bloque sirve para estructurar la cuarta sección principal de la página.*/
+.info4 {
+  background-color: #F5F7FE;
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+}
+
+/*Este bloque sirve para posicionar el contenedor de textos de la sección 4.*/
+.contenido3 {
+  margin-top: 5rem;
+  margin-left: 18rem;
+}
+
+/*Este bloque sirve para dar estilo al título principal H2 de la sección 4.*/
+.contenido3 h2 {
+  color: #4C5480;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 45rem;
+}
+
+/*Estos bloques sirven para dar formato a los párrafos explicativos de la sección 4.*/
+.i1 {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  max-width: 27rem;
+  margin-top: 2rem;
+}
+
+.i2 {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  max-width: 31rem;
+  margin-top: 3rem;
+}
+
+.i3 {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  max-width: 31rem;
+  margin-top: 3rem;
+}
+
+.i4 {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  max-width: 31rem;
+  margin-top: 3rem;
+}
+
+/*Este bloque sirve para estructurar la tarjeta estilo dashboard de la sección 4.*/
+.card {
+  background-color: #12192e;
+  border: 0.0625rem solid #202b46;
+  border-radius: 1.25rem;
+  width: 100%;
+  max-width: 28rem;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.4);
+  margin-left: 65rem;
+  margin-top: -20rem;
+}
+
+/*Este bloque sirve para dar espacio inferior al encabezado de la tarjeta.*/
+.card-header {
+  margin-bottom: 1.25rem;
+}
+
+/*Este bloque sirve para formatear el subtítulo pequeño de la tarjeta.*/
+.card-subtitle {
+  font-size: 0.9375rem;
+  color: #7282a1;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/*Este bloque sirve para la cifra de dinero destacada en verde neón.*/
+.card-amount {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #38f0b0;
+  letter-spacing: 0.05rem;
+}
+
+/*Este bloque sirve para dar espacio a la sección del indicador de barra.*/
+.progress-section {
+  margin-bottom: 1.5rem;
+}
+
+/*Este bloque sirve para crear el carril de fondo de la barra de progreso.*/
+.progress-bar-container {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #1b253e;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+/*Este bloque sirve para renderizar el nivel de avance dentro de la barra.*/
+.progress-bar-fill {
+  height: 100%;
+  background-color: #38f0b0;
+  border-radius: 1rem;
+}
+
+/*Este bloque sirve para distribuir las etiquetas numéricas a los extremos de la barra.*/
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #7282a1;
+}
+
+/*Este bloque sirve para la lista de observaciones con borde superior.*/
+.insights-list {
+  list-style: none;
+  border-top: 0.0625rem solid #1e2842;
+}
+
+/*Este bloque sirve para dar estilo a cada ítem de la lista de observaciones.*/
+.insight-item {
+  position: relative;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #a3b3cc;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.25rem;
+  border-bottom: 0.0625rem solid #1e2842;
+}
+
+/*Este bloque sirve para eliminar la línea divisoria del último elemento.*/
+.insight-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/*Este bloque sirve para generar el viñeta circular azul antes de cada ítem de la lista.*/
+.insight-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.4rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #3b52f6;
+  border-radius: 50%;
+}
+
+/*Este bloque sirve para la barra divisoria inferior de la sección 4.*/
+.barra4 {
+  background-color: #0E1533;
+  width: 100%;
+  height: 0.09rem;
+  opacity: 0.5;
+  margin-top: -18rem;
+}
+
+/****************************************************************************fin estilo info 4 y tarjeta 4*************************************************************************************/
+/**************************************************************************** responsive info 4 y tarjeta 4*************************************************************************************/
+
+/*Este bloque sirve para reajustar los márgenes de la sección 4 en pantallas de laptop.*/
+@media (max-width: 1400px) {
+  .contenido3 {
+    margin-left: 5rem;
+  }
+  .card {
+    margin-left: 48rem;
+  }
+}
+
+/*Este bloque sirve para reestructurar la sección 4 en un diseño de una sola columna en móviles.*/
+@media (max-width: 61.9375rem) {
+  .info4 {
+    min-height: auto;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contenido3 {
+    margin-top: 0;
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contenido3 h2,
+  .i1, .i2, .i3, .i4 {
+    max-width: 100%;
+  }
+
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    box-sizing: border-box;
+  }
+
+  .barra4 {
+    margin-top: 3rem;
+  }
+}
+
+/****************************************************************************fin responsive info 4 y tarjeta 4*************************************************************************************/
+
+/*Este bloque sirve para estructurar la quinta sección (Notificaciones/Alertas).*/
+.info5 {
+  background-color: #F5F7FE;
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+}
+
+/*Este bloque sirve para dar diseño de píldora destacada al botón de alerta.*/
+.alerta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  background-color: #f17878;
+  border-radius: 999rem;
+  width: 8.5rem;
+  height: 3rem;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.0625rem;
+  margin-top: 5rem;
+  margin-left: 17.5rem;
+}
+
+/*Este bloque sirve para crear el punto circular blanco dentro del botón de alerta.*/
+.alerta .pun {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/*Este bloque sirve para formatear el título H2 de la quinta sección.*/
+.info5 h2 {
+  color: #4C5480;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 40rem;
+  margin-left: 17.5rem;
+  margin-top: 2rem;
+}
+
+/*Este bloque sirve para dar formato al párrafo de la quinta sección.*/
+.info5 p {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  font-size: 1.15rem;
+  max-width: 27rem;
+  margin-top: 2rem;
+  margin-left: 17.5rem;
+}
+
+/*Este bloque sirve para dar diseño a la tarjeta que simula una notificación móvil.*/
+.notificacion {
+  background-color: #121831;
+  width: 22rem;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  margin-right: 18rem;
+  margin-top: -38rem;
+  float: right;
+  /*Flota la tarjeta hacia el extremo derecho.*/
+}
+
+/*Este bloque sirve para alinear el encabezado interno de la notificación.*/
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/*Este bloque sirve para dar formato al nombre de la aplicación en la notificación.*/
+.app-name {
+  color: #5c79b8;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/*Este bloque sirve para dar formato al texto del indicador de tiempo de la notificación.*/
+.notification-time {
+  color: #5c79b8;
+  font-size: 1rem;
+}
+
+/*Este bloque sirve para estilizar el cuadro del mensaje dentro de la notificación.*/
+.notification-body {
+  background-color: #2e1818;
+  padding: 1.25rem;
+  border-radius: 0.875rem;
+}
+
+/*Este bloque sirve para dar formato al texto del mensaje de alerta.*/
+.notification-text {
+  color: #ff6b57;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/*Este bloque sirve para la línea divisoria inferior de la sección 5, solucionando el problema de elevación.*/
+.barra5 {
+  background-color: #0E1533;
+  width: 100%;
+  height: 0.09rem;
+  opacity: 0.9;
+  margin-top: -5rem;
+  /*Aplica margen negativo para elevar la línea.*/
+  position: relative;
+  /*Establece posición relativa para que el margen negativo funcione correctamente sin bloquearse por el float.*/
+  z-index: 10;
+  /*Garantiza que la barra quede visible por encima de otras capas.*/
+}
+
+/****************************************************************************fin estilo info 5*************************************************************************************/
+/****************************************************************************Inicio responsive info 5*************************************************************************************/
+
+/*Este bloque sirve para adaptar la quinta sección en pantallas medianas.*/
+@media (min-width: 62rem) {
+  .info5-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .info5 h2 {
+    font-size: 2.8rem;
+    margin-top: 2rem;
+  }
+
+  .notificacion {
+    justify-self: end;
+  }
+}
+
+/*Este bloque sirve para ajustar los márgenes laterales de la sección 5 en laptops.*/
+@media (max-width: 1400px) {
+  .alerta,
+  .info5 h2,
+  .info5 p {
+    margin-left: 5rem;
+  }
+
+  .notificacion {
+    margin-right: 5rem;
+  }
+}
+
+/*Este bloque sirve para centrar y adaptar la sección de notificaciones en teléfonos móviles.*/
+@media (max-width: 768px) {
+  .info5 {
+    min-height: auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .alerta,
+  .info5 h2,
+  .info5 p {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .info5 h2 {
+    font-size: 2rem;
+  }
+
+  .notificacion {
+    float: none;
+    /*Desactiva la flotación flotante en dispositivos móviles.*/
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .barra5 {
+    margin-top: 3rem;
+  }
+}
+
+/**************************************************************************** responsive info 5*************************************************************************************/
+/****************************************************************************inicia estilo formulario******************************************************************************/
+
+.f1 {
+  background-color: #EDF1FD;
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+  
+}
+/* Container Principal */
+.cuadro-formulario {
+  background-color: #ffffff;
+  border-radius: 2.5rem;
+  min-height: 45rem;
+  height: auto;
+  width: 100%;
+  max-width: 39rem;
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.titulo-sub h2 {
+  color: #10173A;
+  text-align: center;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.titulo-sub p {
+  color: #4C5480;
+  margin-top: 2rem;
+  font-family: "Inter", sans-serif;
+}
+
+/* Cambiamos el contenedor a GRID de 2 columnas equivalentes */
+.formulario1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+/* Fila 1: Nombre y Celular (Etiquetas) */
+.form1 {
+  grid-column: 1;
+  grid-row: 1;
+  color: #10173A;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.form2 {
+  grid-column: 2;
+  grid-row: 1;
+  color: #10173A;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  margin: 0; /* Limpiamos márgenes anteriores */
+}
+
+/* Fila 2: Nombre y Celular (Inputs) */
+#nombre {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 0.3rem;
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #EDF1FD;
+  padding: 0.75rem 1rem;
+  color: #8791BB ;
+  box-sizing: border-box;
+  border: none;
+   font-family: "Inter", sans-serif;
+}
+
+#celu {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 0.3rem;
+  margin-left: 0; 
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #EDF1FD;
+  padding: 0.75rem 1rem;
+  color: #8791BB;
+  box-sizing: border-box;
+   border: none;
+   font-family: "Inter", sans-serif;
+}
+
+/* Fila 3 y 4: Correo (Ocupa ambas columnas) */
+.form3 {
+  grid-column: 1 / span 2;
+  margin-top: 1rem;
+  color: #10173A;
+  font-family: "Inter", sans-serif;
+}
+
+#correo {
+  grid-column: 1 / span 2;
+  margin-top: 0.3rem;
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #EDF1FD;
+  padding: 0.75rem 1rem;
+  color: #8b9bb4;
+  box-sizing: border-box;
+  border: none;
+   font-family: "Inter", sans-serif;
+}
+
+/* Fila 5 y 6: Ciudad (Ocupa ambas columnas) */
+.form4 {
+  grid-column: 1 / span 2;
+  margin-top: 1rem;
+  color: #10173A;
+  font-family: "Inter", sans-serif;
+}
+
+#ciudad {
+  grid-column: 1 / span 2;
+  margin-top: 0.3rem;
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #EDF1FD;
+  padding: 0.75rem 1rem;
+  color: #8b9bb4;
+  box-sizing: border-box;
+   border: none;
+   font-family: "Inter", sans-serif;
+}
+
+
+/* Checkbox */
+.checkbox {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  color: #4a86e8;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-top: 0.2rem;
+  cursor: pointer;
+}
+
+.checkbox span {
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+}
+
+/* Botón Registrarse */
+.bt1 {
+  grid-column: 1 / span 2;
+  margin-top: 1.5rem;
+  background-color: #5b7fff;
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+}
+
+
+.tx1 {
+  grid-column: 1 / span 2; /* Ocupa las 2 columnas del grid */
+  color: #4C5480;
+  font-family: "Inter", sans-serif;
+  display: block;
+  width: 100%;
+  margin-top: 1rem; /* Espaciado con respecto al botón */
+  text-align: center; /* Opcional: centra el texto bajo el botón */
+}
+
+/* Texto legal */
+ 
+/*************Este bloque sirve para reordenar los campos del formulario en una sola columna en móviles.************************************************************/
+@media (max-width: 768px) {
+  .cuadro-formulario {
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 1.5rem;
+  }
+
+  .titulo-sub h2 {
+    margin-left: 0;
+  }
+
+  .form2 {
+    margin-left: 0;
+    /*Elimina el desplazamiento lateral de escritorio.*/
+    margin-top: 1.5rem;
+    /*Coloca el campo debajo del campo Nombre.*/
+  }
+
+  #nombre, #celu {
+    width: 100%;
+    /*Hace que los inputs ocupen el 100% del ancho.*/
+    margin-left: 0;
+    box-sizing: border-box;
+  }
+}
+
+.form2 {
+    margin-left: 0;
+    /*Elimina el desplazamiento lateral de escritorio.*/
+    margin-top: 1.5rem;
+    /*Coloca el campo debajo del campo Nombre.*/
+  }
+
+  #nombre, #celu {
+    width: 100%;
+    /*Hace que los inputs ocupen el 100% del ancho.*/
+    margin-left: 0;
+    box-sizing: border-box;
+  }
